@@ -225,6 +225,33 @@
   .reveal.in{opacity:1; transform:none;}
   @media(prefers-reduced-motion:reduce){.reveal{opacity:1; transform:none; transition:none;}}
 
+  /* hero split — two-column (reference-style: text + portrait media) */
+  .hero-split{display:grid; grid-template-columns:1.08fr .92fr; gap:56px; align-items:center; text-align:left; width:100%;}
+  .hero-split .eyebrow::after{display:none;}
+  .hero-split h1{font-size:clamp(2.6rem,6vw,5rem);}
+  .hero-split .role{margin-left:0; margin-right:0;}
+  .hero-split .cta-row{justify-content:flex-start;}
+  .hero-photo{justify-self:end; width:min(330px,100%); position:relative;}
+  .hero-photo .frame{position:relative; border-radius:26px; padding:3px; background:var(--grad); box-shadow:0 30px 70px rgba(176,51,140,.3);}
+  .hero-photo .frame::before{content:""; position:absolute; inset:-18px; border-radius:38px; background:radial-gradient(circle at 50% 28%, rgba(255,176,32,.24), transparent 70%); z-index:-1;}
+  .hero-photo img{display:block; width:100%; height:auto; border-radius:23px;}
+  .hero-photo .photo-chip{position:absolute; left:14px; bottom:14px; font-family:var(--display); font-size:12.5px; font-weight:600; color:var(--text); background:rgba(20,16,26,.62); backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,.14); padding:7px 13px; border-radius:999px; display:inline-flex; align-items:center; gap:6px;}
+  @media(max-width:900px){
+    .hero-split{grid-template-columns:1fr; text-align:center; gap:34px;}
+    .hero-split .eyebrow{justify-content:center;}
+    .hero-split .eyebrow::after{display:inline-block;}
+    .hero-split .role{margin-left:auto; margin-right:auto;}
+    .hero-split .cta-row{justify-content:center;}
+    .hero-text{order:1;}
+    .hero-photo{order:2; justify-self:center; width:min(270px,100%);}
+  }
+  /* project card footer (reference-style) */
+  .stack-label{display:inline-block; font-family:var(--display); font-size:10px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); background:rgba(255,255,255,.03); border:1px solid var(--line); padding:5px 11px; border-radius:999px; margin-bottom:12px;}
+  .proj h3{transition:color .3s;}
+  .proj:hover h3{color:var(--cyan);}
+  .proj-foot{display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--line); margin-top:2px; padding-top:16px;}
+  .p-index{font-family:var(--display); font-weight:700; font-size:13px; letter-spacing:.06em;}
+
   a:focus-visible, button:focus-visible, .btn:focus-visible{outline:2px solid var(--cyan); outline-offset:3px; border-radius:8px;}
 </style>
 </head>
@@ -258,14 +285,22 @@
     <!-- To use a real intro video, drop a file at assets/intro.mp4 and uncomment:
     <video autoplay loop muted playsinline poster="og-image.png"><source src="assets/intro.mp4" type="video/mp4"></video>
     -->
-    <div class="hero-inner">
-      <span class="eyebrow">Data Analyst · Aspiring Data Engineer</span>
-      <span class="hand grad-text">Hello, I'm</span>
-      <h1><span class="grad-text">Saatwik Sairaam</span><br><span class="grad-text">Vasamsetti.</span></h1>
-      <p class="role">I turn <b>raw, messy data</b> into <b>decisions</b> — building pipelines in <b>Python &amp; SQL</b> and shipping <b>Power BI &amp; Tableau</b> dashboards leaders actually use.</p>
-      <div class="cta-row">
-        <a class="btn btn-primary" href="#projects">View my work →</a>
-        <a class="btn btn-ghost" href="#contact">Get in touch</a>
+    <div class="hero-inner hero-split">
+      <div class="hero-text">
+        <span class="eyebrow">Data · Analytics · Business Intelligence</span>
+        <span class="hand grad-text">Hi, I'm Saatwik, a</span>
+        <h1><span class="grad-text">Data Analyst</span><br><span class="grad-text">&amp; Data Engineer.</span></h1>
+        <p class="role">I turn <b>raw, messy data</b> into <b>decisions</b> — building pipelines in <b>Python &amp; SQL</b> and shipping <b>Power BI &amp; Tableau</b> dashboards leaders actually use.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#projects">View my work →</a>
+          <a class="btn btn-ghost" href="#contact">Get in touch</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <div class="frame">
+          <img src="assets/saatwik.jpg" alt="Saatwik Sairaam Vasamsetti" width="1000" height="1333" />
+          <span class="photo-chip">📍 VIT-AP University</span>
+        </div>
       </div>
     </div>
     <div class="scroll-ind"><div class="mouse"></div><span>Scroll</span></div>
@@ -279,18 +314,12 @@
         <h2>Hello<span class="grad-text">!</span></h2>
         <p>I'm a results-oriented <b>Data Analyst</b> and aspiring <b>Data Engineer</b> with a strong foundation in statistical analysis, data architecture, and business intelligence. Currently pursuing an <b>Integrated M.Tech in Computer Science Engineering</b> (with Virtusa) at <b>VIT-AP University</b>.</p>
         <p>My work spans the full analytics lifecycle — from building <span class="hi">Python &amp; SQL data pipelines</span> that clean and transform messy datasets, to shipping <span class="hi">BI dashboards</span> that bridge the gap between raw data and business insight. I believe a good dashboard answers the question <b>before it's asked</b>.</p>
-        <div class="stat-grid">
-          <div class="stat"><div class="num grad-text">7.55<small>/10</small></div><div class="lbl">Current CGPA</div></div>
-          <div class="stat"><div class="num grad-text">94.8<small>%</small></div><div class="lbl">Class XII</div></div>
-          <div class="stat"><div class="num grad-text">11</div><div class="lbl">Certifications</div></div>
-          <div class="stat"><div class="num grad-text">M.Tech</div><div class="lbl">Integrated · CSE</div></div>
-        </div>
       </div>
-      <div class="about-photo reveal">
-        <div class="frame">
-          <img src="assets/saatwik.jpg" alt="Saatwik Sairaam Vasamsetti at VIT-AP University" loading="lazy" width="1000" height="1333" />
-          <span class="photo-chip">📍 VIT-AP University</span>
-        </div>
+      <div class="stat-grid reveal">
+        <div class="stat"><div class="num grad-text">7.55<small>/10</small></div><div class="lbl">Current CGPA</div></div>
+        <div class="stat"><div class="num grad-text">94.8<small>%</small></div><div class="lbl">Class XII</div></div>
+        <div class="stat"><div class="num grad-text">11</div><div class="lbl">Certifications</div></div>
+        <div class="stat"><div class="num grad-text">M.Tech</div><div class="lbl">Integrated · CSE</div></div>
       </div>
     </div>
   </section>
@@ -331,29 +360,45 @@
           <div class="p-cat">Data Analysis • Business Intelligence</div>
           <h3>Sales Data Analysis Dashboard</h3>
           <p>Engineered <b>Python data pipelines</b> to clean, transform and aggregate large sales datasets, then shipped <b>interactive Power BI dashboards</b> for real-time KPI and market-trend monitoring — driving strategic planning and revenue optimization.</p>
+          <span class="stack-label">Technical Stack</span>
           <div class="tags"><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Power BI</span></div>
-          <div class="p-links"><a href="https://saatwik-1157.github.io" target="_blank" rel="noopener">Live ↗</a><a href="https://github.com/saatwik-1157" target="_blank" rel="noopener">GitHub ↗</a></div>
+          <div class="proj-foot">
+            <span class="p-index grad-text">P·01</span>
+            <div class="p-links"><a href="https://saatwik-1157.github.io" target="_blank" rel="noopener">Live ↗</a><a href="https://github.com/saatwik-1157" target="_blank" rel="noopener">Code ↗</a></div>
+          </div>
         </article>
         <article class="proj reveal">
           <div class="p-cat">Analytics • Statistical Modeling</div>
           <h3>Customer Data Analytics</h3>
           <p>Led comprehensive <b>EDA</b> with advanced SQL and Python to surface consumer-behavior patterns, built custom <b>engagement KPIs</b>, segmented demographics, and <b>predicted customer churn</b> — synthesizing findings into executive summaries.</p>
+          <span class="stack-label">Technical Stack</span>
           <div class="tags"><span class="tag">SQL</span><span class="tag">Python</span><span class="tag">Statistical Modeling</span></div>
-          <div class="p-links"><a href="https://github.com/saatwik-1157" target="_blank" rel="noopener">GitHub ↗</a></div>
+          <div class="proj-foot">
+            <span class="p-index grad-text">P·02</span>
+            <div class="p-links"><a href="https://github.com/saatwik-1157" target="_blank" rel="noopener">Code ↗</a></div>
+          </div>
         </article>
         <article class="proj reveal">
           <div class="p-cat">Data Engineering • ETL</div>
           <h3>Data Cleansing &amp; Validation Pipeline</h3>
           <p>Built systematic <b>data-cleansing workflows</b> resolving missing values and anomalies across disparate datasets, added rigorous <b>validation and transformation protocols</b>, and designed reusable reporting templates for downstream modeling.</p>
+          <span class="stack-label">Technical Stack</span>
           <div class="tags"><span class="tag">Python</span><span class="tag">ETL</span><span class="tag">Data Quality</span></div>
-          <div class="p-links"><a href="https://github.com/saatwik-1157" target="_blank" rel="noopener">GitHub ↗</a></div>
+          <div class="proj-foot">
+            <span class="p-index grad-text">P·03</span>
+            <div class="p-links"><a href="https://github.com/saatwik-1157" target="_blank" rel="noopener">Code ↗</a></div>
+          </div>
         </article>
         <article class="proj reveal">
           <div class="p-cat">GenAI • Data Storytelling <span style="color:var(--faint);font-weight:500;-webkit-text-fill-color:var(--faint);">· Forage 2026</span></div>
           <h3>GenAI-Powered Data Analytics</h3>
           <p>Completed a virtual job simulation performing <b>risk profiling</b> on a real lending dataset, built an <b>AI model to predict customer delinquency</b>, and delivered end-to-end data storytelling with an AI-driven collections strategy.</p>
+          <span class="stack-label">Technical Stack</span>
           <div class="tags"><span class="tag">Python</span><span class="tag">EDA</span><span class="tag">GenAI</span></div>
-          <div class="p-links"><a href="https://github.com/saatwik-1157" target="_blank" rel="noopener">GitHub ↗</a></div>
+          <div class="proj-foot">
+            <span class="p-index grad-text">P·04</span>
+            <div class="p-links"><a href="https://github.com/saatwik-1157" target="_blank" rel="noopener">Code ↗</a></div>
+          </div>
         </article>
       </div>
     </div>

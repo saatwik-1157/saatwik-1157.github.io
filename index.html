@@ -252,6 +252,22 @@
   .proj-foot{display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--line); margin-top:2px; padding-top:16px;}
   .p-index{font-family:var(--display); font-weight:700; font-size:13px; letter-spacing:.06em;}
 
+  /* project experience timeline */
+  #experience{background:var(--ink);}
+  .timeline{position:relative; max-width:840px; margin:0 auto; padding-left:36px;}
+  .timeline::before{content:""; position:absolute; left:8px; top:8px; bottom:8px; width:2px; background:linear-gradient(var(--cyan),var(--magenta)); opacity:.55;}
+  .tl-item{position:relative; padding-bottom:42px;}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-item::before{content:""; position:absolute; left:-36px; top:5px; width:18px; height:18px; border-radius:50%; background:var(--cyan); box-shadow:0 0 0 4px rgba(255,176,32,.14), 0 0 14px rgba(255,176,32,.5);}
+  .tl-role{font-family:var(--display); font-weight:700; font-size:1.3rem; color:var(--text); line-height:1.25;}
+  .tl-meta{display:flex; gap:14px; flex-wrap:wrap; align-items:center; margin:7px 0 14px;}
+  .tl-kind{font-family:var(--display); font-size:11px; letter-spacing:.12em; text-transform:uppercase; font-weight:600; background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent;}
+  .tl-when{font-size:12.5px; color:var(--faint);}
+  .tl-item ul{margin:0 0 14px; padding-left:18px;}
+  .tl-item li{margin-bottom:7px; font-size:1.02rem; line-height:1.6; color:var(--muted);}
+  .tl-item li::marker{color:var(--cyan);}
+  .tl-item li b{color:var(--text); font-weight:600;}
+
   a:focus-visible, button:focus-visible, .btn:focus-visible{outline:2px solid var(--cyan); outline-offset:3px; border-radius:8px;}
 </style>
 </head>
@@ -270,6 +286,7 @@
       <a class="section-link" href="#about">About</a>
       <a class="section-link" href="#skills">Skills</a>
       <a class="section-link" href="#projects">Projects</a>
+      <a class="section-link" href="#experience">Experience</a>
       <a class="section-link" href="#certs">Certifications</a>
       <a class="section-link" href="#contact">Contact</a>
       <a class="nav-cta" href="Saatwik-Vasamsetti-Resume.pdf" target="_blank" rel="noopener">Résumé ↓</a>
@@ -426,6 +443,64 @@
       <p style="text-align:center; margin-top:44px;">
         <a class="btn btn-ghost" href="https://github.com/saatwik-1157" target="_blank" rel="noopener" style="display:inline-flex;">View all repositories on GitHub ↗</a>
       </p>
+    </div>
+  </section>
+
+  <!-- PROJECT EXPERIENCE -->
+  <section id="experience">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="sec-tag grad-text">where I've applied it</span>
+        <h2 class="sec-title">Project Experience
+          <svg class="underline" viewBox="0 0 300 14" fill="none" preserveAspectRatio="none"><path d="M2 9C60 3 140 3 298 7" stroke="url(#u1)" stroke-width="4" stroke-linecap="round"/></svg>
+        </h2>
+        <p class="sec-sub">Hands-on experience built through real projects — from full-stack platforms to data-driven simulations.</p>
+      </div>
+      <div class="timeline">
+        <div class="tl-item reveal">
+          <div class="tl-role">GenAI-Powered Data Analytics</div>
+          <div class="tl-meta"><span class="tl-kind">Job Simulation · Forage</span><span class="tl-when">2026</span></div>
+          <ul>
+            <li>Performed <b>risk profiling</b> on a real lending dataset and built an <b>AI model to predict customer delinquency</b>.</li>
+            <li>Delivered end-to-end <b>data storytelling</b> and an AI-driven collections strategy for stakeholders.</li>
+          </ul>
+          <div class="tags"><span class="tag">Python</span><span class="tag">EDA</span><span class="tag">GenAI</span></div>
+        </div>
+        <div class="tl-item reveal">
+          <div class="tl-role">OfferPilot — Job-Application Platform</div>
+          <div class="tl-meta"><span class="tl-kind">Full-Stack · Personal Project</span></div>
+          <ul>
+            <li>Built a done-for-you application platform for F-1/OPT students as a dependency-free static web app.</li>
+            <li>Implemented an AI-style <b>resume-tailoring engine</b>, dark mode, and an OPT Runway Calculator with localStorage persistence.</li>
+          </ul>
+          <div class="tags"><span class="tag">JavaScript</span><span class="tag">HTML</span><span class="tag">CSS</span></div>
+        </div>
+        <div class="tl-item reveal">
+          <div class="tl-role">Smart University Management System</div>
+          <div class="tl-meta"><span class="tl-kind">DBMS · Academic Project</span></div>
+          <ul>
+            <li>Designed a <b>MySQL-backed</b> enterprise system managing students, courses, and academic records.</li>
+            <li>Built a glassmorphism UI with <b>Chart.js dashboards</b> for real-time academic insights.</li>
+          </ul>
+          <div class="tags"><span class="tag">MySQL</span><span class="tag">JavaScript</span><span class="tag">Chart.js</span></div>
+        </div>
+        <div class="tl-item reveal">
+          <div class="tl-role">PathAhead — Career-Guidance Platform</div>
+          <div class="tl-meta"><span class="tl-kind">Web · Project</span></div>
+          <ul>
+            <li>Developed a premium, responsive, production-ready website for a career-awareness workshop platform serving intermediate students across India.</li>
+          </ul>
+          <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div>
+        </div>
+        <div class="tl-item reveal">
+          <div class="tl-role">ExamPlanner — Android Study App</div>
+          <div class="tl-meta"><span class="tl-kind">Mobile · Personal Project</span></div>
+          <ul>
+            <li>Built a Kotlin study-planner app with authentication, exam tracking, and a customizable <b>Pomodoro focus timer</b>.</li>
+          </ul>
+          <div class="tags"><span class="tag">Kotlin</span><span class="tag">Android</span><span class="tag">Java</span></div>
+        </div>
+      </div>
     </div>
   </section>
 

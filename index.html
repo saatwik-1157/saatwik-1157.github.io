@@ -162,6 +162,13 @@
   .stat .num{font-family:var(--display); font-weight:700; font-size:2.4rem; letter-spacing:-.02em; line-height:1;}
   .stat .num small{font-size:.5em;}
   .stat .lbl{font-size:13px; color:var(--muted); margin-top:10px; font-weight:500;}
+  .about .stat-grid{margin-top:32px;}
+  .about-photo{position:relative; justify-self:center; width:min(360px,100%);}
+  .about-photo .frame{position:relative; border-radius:24px; padding:3px; background:var(--grad); box-shadow:0 26px 64px rgba(176,51,140,.24); max-width:360px; width:100%;}
+  .about-photo .frame::before{content:""; position:absolute; inset:-16px; border-radius:34px; background:radial-gradient(circle at 50% 25%, rgba(255,176,32,.2), transparent 70%); z-index:-1;}
+  .about-photo img{display:block; width:100%; height:auto; border-radius:21px;}
+  .photo-chip{position:absolute; left:14px; bottom:14px; font-family:var(--display); font-size:12.5px; font-weight:600; color:var(--text); background:rgba(20,16,26,.62); backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,.14); padding:7px 13px; border-radius:999px; display:inline-flex; align-items:center; gap:6px;}
+  @media(max-width:860px){.about-photo{grid-row:1; margin-bottom:8px;}}
 
   /* ---------- SKILLS ---------- */
   .skill-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
@@ -272,12 +279,18 @@
         <h2>Hello<span class="grad-text">!</span></h2>
         <p>I'm a results-oriented <b>Data Analyst</b> and aspiring <b>Data Engineer</b> with a strong foundation in statistical analysis, data architecture, and business intelligence. Currently pursuing an <b>Integrated M.Tech in Computer Science Engineering</b> (with Virtusa) at <b>VIT-AP University</b>.</p>
         <p>My work spans the full analytics lifecycle — from building <span class="hi">Python &amp; SQL data pipelines</span> that clean and transform messy datasets, to shipping <span class="hi">BI dashboards</span> that bridge the gap between raw data and business insight. I believe a good dashboard answers the question <b>before it's asked</b>.</p>
+        <div class="stat-grid">
+          <div class="stat"><div class="num grad-text">7.55<small>/10</small></div><div class="lbl">Current CGPA</div></div>
+          <div class="stat"><div class="num grad-text">94.8<small>%</small></div><div class="lbl">Class XII</div></div>
+          <div class="stat"><div class="num grad-text">11</div><div class="lbl">Certifications</div></div>
+          <div class="stat"><div class="num grad-text">M.Tech</div><div class="lbl">Integrated · CSE</div></div>
+        </div>
       </div>
-      <div class="stat-grid reveal">
-        <div class="stat"><div class="num grad-text">7.55<small>/10</small></div><div class="lbl">Current CGPA</div></div>
-        <div class="stat"><div class="num grad-text">94.8<small>%</small></div><div class="lbl">Class XII</div></div>
-        <div class="stat"><div class="num grad-text">11</div><div class="lbl">Certifications</div></div>
-        <div class="stat"><div class="num grad-text">M.Tech</div><div class="lbl">Integrated · CSE</div></div>
+      <div class="about-photo reveal">
+        <div class="frame">
+          <img src="assets/saatwik.jpg" alt="Saatwik Sairaam Vasamsetti at VIT-AP University" loading="lazy" width="1000" height="1333" />
+          <span class="photo-chip">📍 VIT-AP University</span>
+        </div>
       </div>
     </div>
   </section>

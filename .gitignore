@@ -1,6 +1,12 @@
 # Personal planning docs — not part of the public portfolio
 Saatwik-Internship-Toolkit.pdf
 
+# Local backup of the previous portfolio design
+index-classic-backup.html
+
+# Local tooling / preview config
+.claude/
+
 # OS / editor cruft
 Thumbs.db
 .DS_Store

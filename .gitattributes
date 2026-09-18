@@ -1,0 +1,12 @@
+# Default: let Git normalise line endings for text it detects.
+* text=auto
+
+# Binary assets. Without these, core.autocrlf=true rewrites 0x0A bytes inside
+# the PDFs and images on checkout and hands the reader a corrupt file.
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.ico binary
+*.woff binary
+*.woff2 binary

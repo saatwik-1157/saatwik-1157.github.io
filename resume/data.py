@@ -346,7 +346,7 @@ EXPERIENCE = [
 ]
 
 CERTIFICATIONS = [
-    "Google Analytics Certification — Google, 2026 (ID 183723043)",
+    "Google Analytics Certification — Google, May 2026 – May 2027 (ID 183723043)",
     "Google AI Essentials — Google",
     "GenAI-Powered Data Analytics (Job Simulation) — Forage, Jun 2026",
     "Data Analytics Job Simulation — Deloitte via Forage, Jul 2026",

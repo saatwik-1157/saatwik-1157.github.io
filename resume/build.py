@@ -8,6 +8,10 @@ resume is held to one page and the build fails loudly if it spills, because a
 two-page "one-page resume" is the kind of thing nobody notices until a recruiter
 does.
 
+Output is deterministic — the same content always produces byte-identical
+PDFs — so `git status` after a rebuild tells the truth about whether anything
+actually changed.
+
 Requires: pip install reportlab
 """
 
@@ -242,6 +246,10 @@ def render(path, story_fn, size, margin, title, with_footer=False):
         topMargin=margin * 0.82, bottomMargin=margin * 0.7,
         title=title, author=data.PROFILE["name"], subject=data.PROFILE["title"],
         creator="resume/build.py",
+        # Deterministic output: without this reportlab stamps a build timestamp
+        # and a fresh document id, so rebuilding with no content change still
+        # shows both PDFs as modified and invites a pointless commit.
+        invariant=1,
     )
     width = doc.width
     st = styles(size)

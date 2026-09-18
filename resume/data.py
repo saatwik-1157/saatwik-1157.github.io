@@ -29,13 +29,12 @@ PROFILE = {
 # Opens the one-page resume. Three lines, because the reader gives it six
 # seconds and decides there. Every claim in it is expanded and evidenced below.
 RESUME_SUMMARY = (
-    "Full-stack engineer who ships complete systems and proves they work. Sole author of a "
-    "production-grade emergency-response platform — a 64-route TypeScript API on PostgreSQL/PostGIS, "
-    "a Kotlin Compose Android client and a YOLO11 vision pipeline — verified by 636 automated "
-    "assertions, including 74 security attacks and 75 concurrency tests, all passing. Equally strong in "
-    "data: scikit-learn back-testing, statistical validation and BI, with 12 certifications "
-    "across AWS, Google, SAP and Oracle. Available immediately for software-engineering and "
-    "data internships."
+    "Full-stack engineer who ships complete systems and proves they work. Sole author of an "
+    "emergency-response platform — a 64-route TypeScript API on PostgreSQL/PostGIS, a Kotlin "
+    "Compose Android client and a YOLO11 vision pipeline — whose API alone passes 636 assertions "
+    "across six suites, 74 of them security attacks, plus 66 Android and 39 pipeline tests. Strong in "
+    "data too: scikit-learn back-testing, statistical validation and BI, with 12 certifications across "
+    "AWS, Google, SAP and Oracle. Available immediately for software-engineering and data internships."
 )
 
 # Opens the CV. Longer than RESUME_SUMMARY, which has six seconds to work.
@@ -83,7 +82,7 @@ SKILLS = [
                   "transactional concurrency control"),
     ("Data & ML", "pandas, NumPy, scikit-learn, Ultralytics YOLO11, ONNX, exploratory data analysis, "
                   "walk-forward back-testing, conformal prediction, Monte Carlo simulation"),
-    ("Visualization & BI", "Power BI, Tableau, Matplotlib, Chart.js, Advanced Excel dashboards, data storytelling"),
+    ("Visualisation & BI", "Power BI, Tableau, Matplotlib, Chart.js, Advanced Excel dashboards, data storytelling"),
     ("Cloud, Tooling & QA", "AWS Cloud Foundations, Oracle Cloud (OCI), Docker & Compose, Git, GitHub Actions CI, "
                             "Gradle, Vitest, ESLint, PyInstaller"),
 ]
@@ -103,23 +102,24 @@ PROJECTS = [
         "cv": True,
         "resume_bullets": [
             'Sole author of a 64-route Fastify/TypeScript API over a 56-table PostGIS schema, plus a Kotlin Compose Android client and four browser surfaces — 117 commits.',
-            'Verified with 636 assertions across six suites, zero failures, including 75 concurrency tests and 74 security attacks that must each be refused.',
-            'Trained a YOLO11 road-damage detector on RDD2022 across four countries to a measured mAP50 of 0.471, with ONNX export and a ~48 ms/image edge tier for Pi-class hardware.',
+            'Verified the API with 636 assertions across six suites, zero failures, including 75 concurrency tests and 74 security attacks that must each be refused.',
+            'Trained four YOLO11 variants on RDD2022 across four countries — best measured mAP50 0.471 on held-out validation, plus a separate nano ONNX tier at ~48 ms/image on CPU for Pi-class hardware.',
         ],
         "bullets": [
             "Designed and built the entire platform solo across 117 commits: a 64-route Fastify modular "
             "monolith, a 56-table PostGIS schema with 138 indexes and 5 migrations, four browser surfaces, "
             "a native Android client and a computer-vision pipeline.",
-            "Verified it with 636 assertions across six suites, zero failures — including 74 security "
+            "Verified the API with 636 assertions across six suites, zero failures — including 74 security "
             "attacks that must each be refused (cross-tenant access, role escalation, SQL injection, "
             "forged and alg:none tokens, unsigned webhooks) and 75 concurrency tests.",
             "Settled every race in the database rather than by timing: SELECT ... FOR UPDATE on booking "
             "rows with offer expiry re-checked under the lock, a partial unique index making \"paid once\" "
             "true under simultaneous confirmations, and a hash-chained audit log that Postgres RULES make "
             "immutable.",
-            "Trained a YOLO11 road-damage detector on RDD2022 across four countries to a measured "
-            "mAP50 of 0.471 (mAP50-95 0.226) on held-out validation, with ONNX export and a nano edge "
-            "tier at ~48 ms/image on CPU for Pi-class hardware.",
+            "Trained four YOLO11 variants on RDD2022 across four countries: the best reaches a measured "
+            "mAP50 of 0.471 (mAP50-95 0.226) on held-out validation at ~135 ms/image, and a separate "
+            "nano tier trades accuracy for ~48 ms/image on CPU for Pi-class hardware. Potholes remain "
+            "the hard class at ~0.24, and the per-class breakdown says so.",
             "Shipped Off-Grid Mode as architecture, not fallback: a Kotlin SOS ladder (data → SMS → 112 "
             "→ offline queue) where exactly one channel owns an emergency, proven by 21 unit tests on "
             "that file alone, so a retry never dispatches a second ambulance.",
@@ -127,7 +127,8 @@ PROJECTS = [
             "a file:line citation rots, or when module boundaries break — after the same wrong number "
             "reached twenty documents three times and a human caught it each time.",
             "Made a feature phone a first-class client: a complete booking over SMS with no app, in eight "
-            "languages switched by text command.",
+            "languages switched by text command — seven of them machine-translated and not yet "
+            "native-reviewed, which the project states rather than implies.",
         ],
     },
     {
@@ -374,7 +375,7 @@ CERTIFICATIONS_RESUME = [
 
 ACHIEVEMENTS = [
     "Sole author of RoadAssist Bharat — 117 commits covering API, Android client, CV pipeline, "
-    "schema, six test suites and CI, with 636 assertions passing and zero failures.",
+    "schema, six test suites and CI, with 636 assertions passing over the API and zero failures.",
     "Trained and measured four YOLO11 detector variants on RDD2022, reaching mAP50 0.471 on held-out "
     "validation and publishing the per-class breakdown including the classes that perform badly.",
     "Earned 12 professional certifications across data analytics, cloud (AWS &amp; Oracle), SAP and web "

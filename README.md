@@ -36,6 +36,10 @@ Also bundled: `Saatwik-Vasamsetti-Resume.pdf`, `Saatwik-Vasamsetti-CV.pdf` and
 `Saatwik-Internship-Toolkit.pdf`, linked from the page so a visitor can leave
 with the document rather than a screenshot.
 
+The first two are build output, not hand-made files. Their content lives in
+`resume/data.py` and is rendered by `python resume/build.py` — see
+[resume/README.md](resume/README.md).
+
 ## Run it
 
 ```bash
@@ -58,9 +62,11 @@ index.html                      the entire site
 index-classic-backup.html       previous design, kept for reference
 og-image.png                    social preview card
 assets/saatwik.jpg              portrait
-Saatwik-Vasamsetti-Resume.pdf   linked from #contact
-Saatwik-Vasamsetti-CV.pdf
+Saatwik-Vasamsetti-Resume.pdf   linked from #contact — built from resume/
+Saatwik-Vasamsetti-CV.pdf                              — built from resume/
 Saatwik-Internship-Toolkit.pdf
+resume/data.py                  résumé and CV content
+resume/build.py                 renders both PDFs
 ```
 
 ## Optional intro video

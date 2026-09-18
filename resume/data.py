@@ -29,22 +29,24 @@ PROFILE = {
 # Opens the one-page resume. Three lines, because the reader gives it six
 # seconds and decides there. Every claim in it is expanded and evidenced below.
 RESUME_SUMMARY = (
-    "Full-stack engineer who ships complete systems and proves they work. Sole author of an "
-    "emergency-response platform — a 64-route TypeScript API on PostgreSQL/PostGIS, a Kotlin "
-    "Compose Android client and a YOLO11 vision pipeline — whose API alone passes 636 assertions "
-    "across six suites, 74 of them security attacks, plus 66 Android and 39 pipeline tests. Strong in "
-    "data too: scikit-learn back-testing, statistical validation and BI, with 12 certifications across "
-    "AWS, Google, SAP and Oracle. Available immediately for software-engineering and data internships."
+    "Full-stack engineer who ships complete systems and proves they work. Built Trade Research, where "
+    "every number is computed and machine-checked back to its source — leakage-free walk-forward "
+    "back-testing of six scikit-learn models, conformal prediction intervals, and a FastAPI/PostgreSQL/"
+    "React execution platform — and reported the honest negative result. Also sole author of an "
+    "emergency-response platform whose 64-route TypeScript API alone passes 636 assertions across six "
+    "suites, 74 of them security attacks. Nine certifications across AWS, Google and SAP. Available "
+    "immediately for software-engineering and data internships."
 )
 
 # Opens the CV. Longer than RESUME_SUMMARY, which has six seconds to work.
 SUMMARY = (
-    "Full-stack engineer who ships production-shaped systems and measures them. Recent work spans a "
-    "TypeScript/PostgreSQL platform with 636 passing assertions and a Kotlin Compose client, a YOLO11 "
-    "computer-vision pipeline trained to a measured mAP50 of 0.471, and research tooling where every "
-    "number in a generated report is machine-checked back to its source data. Comfortable across the "
-    "stack — API and schema design, transactional concurrency, front-end delivery, Python data "
-    "pipelines and BI — and in the habit of reporting the result even when the result is negative."
+    "Full-stack engineer who ships production-shaped systems and measures them. Recent work spans "
+    "Trade Research, where Python computes every figure and a verifier traces each one in a generated "
+    "report back to its source data, and an offline-first emergency platform whose TypeScript/PostGIS "
+    "API passes 636 assertions with a Kotlin Compose client and a YOLO11 pipeline beside it. "
+    "Comfortable across the stack — API and schema design, transactional concurrency, front-end "
+    "delivery, Python data pipelines and BI — and in the habit of reporting the result even when "
+    "the result is negative."
 )
 
 EDUCATION = [
@@ -83,7 +85,7 @@ SKILLS = [
     ("Data & ML", "pandas, NumPy, scikit-learn, Ultralytics YOLO11, ONNX, exploratory data analysis, "
                   "walk-forward back-testing, conformal prediction, Monte Carlo simulation"),
     ("Visualisation & BI", "Power BI, Tableau, Matplotlib, Chart.js, Advanced Excel dashboards, data storytelling"),
-    ("Cloud, Tooling & QA", "AWS Cloud Foundations, Oracle Cloud (OCI), Docker & Compose, Git, GitHub Actions CI, "
+    ("Cloud, Tooling & QA", "AWS, Docker & Compose, Git, GitHub Actions CI, "
                             "Gradle, Vitest, ESLint, PyInstaller"),
 ]
 
@@ -92,6 +94,35 @@ SKILLS = [
 # Bullets are ordered most-defensible first.
 
 PROJECTS = [
+    {
+        "name": "Trade Research — Verifiable Research & Execution Platform",
+        "dates": "Aug – Sep 2026",
+        "stack": "Python, scikit-learn, pandas, FastAPI, PostgreSQL, React, MetaTrader 5, PyInstaller",
+        "repo": "github.com/saatwik-1157/trade-research",
+        "resume": True,
+        "cv": True,
+        "resume_bullets": [
+            'Built a leakage-free walk-forward back-test of six scikit-learn models against naive and drift baselines, with conformal intervals, Monte Carlo paths and a cost-aware trading simulation.',
+            'Made the numbers checkable: indicators computed in Python, financials from SEC EDGAR XBRL, and a verifier that traces every figure in a generated note back to the data — then reported the honest negative result.',
+        ],
+        "bullets": [
+            "Built a leakage-free walk-forward back-test benchmarking six scikit-learn models against "
+            "naive and drift baselines, with conformal prediction intervals reporting honest held-out "
+            "coverage, Monte Carlo price paths, and a cost-aware trading simulation reporting Sharpe "
+            "and drawdown.",
+            "Inverted the usual \"AI analyst\" design so Python computes and the model only interprets: "
+            "indicators are calculated in code, financials come from SEC EDGAR XBRL with accession "
+            "numbers, missing data stays null, and a verifier machine-checks every figure in the "
+            "finished note back to the snapshot.",
+            "Implemented the execution platform end to end — FastAPI, PostgreSQL and React wiring "
+            "alerts through risk checks and an OMS to the broker — plus an autonomous MetaTrader 5 "
+            "demo harness with scheduled wind-down.",
+            "Reported the negative result rather than burying it: none of the strategies measured here "
+            "has a demonstrable edge, and the README says so first.",
+            "Measured the packaging decision instead of preferring one: PyInstaller onedir starts in "
+            "1,000 ms against onefile's 5,400 ms, so the 24-command toolkit ships as a directory.",
+        ],
+    },
     {
         "name": "RoadAssist Bharat — Offline-First Emergency Mobility Platform",
         "dates": "Aug – Sep 2026",
@@ -129,35 +160,6 @@ PROJECTS = [
             "Made a feature phone a first-class client: a complete booking over SMS with no app, in eight "
             "languages switched by text command — seven of them machine-translated and not yet "
             "native-reviewed, which the project states rather than implies.",
-        ],
-    },
-    {
-        "name": "Trade Research — Verifiable Research & Execution Platform",
-        "dates": "Aug – Sep 2026",
-        "stack": "Python, scikit-learn, pandas, FastAPI, PostgreSQL, React, MetaTrader 5, PyInstaller",
-        "repo": "github.com/saatwik-1157/trade-research",
-        "resume": True,
-        "cv": True,
-        "resume_bullets": [
-            'Built a leakage-free walk-forward back-test of six scikit-learn models against naive and drift baselines, with conformal intervals, Monte Carlo paths and a cost-aware trading simulation.',
-            'Made the numbers checkable: indicators computed in Python, financials from SEC EDGAR XBRL, and a verifier that traces every figure in a generated note back to the data — then reported the honest negative result.',
-        ],
-        "bullets": [
-            "Built a leakage-free walk-forward back-test benchmarking six scikit-learn models against "
-            "naive and drift baselines, with conformal prediction intervals reporting honest held-out "
-            "coverage, Monte Carlo price paths, and a cost-aware trading simulation reporting Sharpe "
-            "and drawdown.",
-            "Inverted the usual \"AI analyst\" design so Python computes and the model only interprets: "
-            "indicators are calculated in code, financials come from SEC EDGAR XBRL with accession "
-            "numbers, missing data stays null, and a verifier machine-checks every figure in the "
-            "finished note back to the snapshot.",
-            "Implemented the execution platform end to end — FastAPI, PostgreSQL and React wiring "
-            "alerts through risk checks and an OMS to the broker — plus an autonomous MetaTrader 5 "
-            "demo harness with scheduled wind-down.",
-            "Reported the negative result rather than burying it: none of the strategies measured here "
-            "has a demonstrable edge, and the README says so first.",
-            "Measured the packaging decision instead of preferring one: PyInstaller onedir starts in "
-            "1,000 ms against onefile's 5,400 ms, so the 24-command toolkit ships as a directory.",
         ],
     },
     {
@@ -347,7 +349,6 @@ EXPERIENCE = [
 
 CERTIFICATIONS = [
     "Google Analytics Certification — Google, May 2026 – May 2027 (ID 183723043)",
-    "Google AI Essentials — Google",
     "GenAI-Powered Data Analytics (Job Simulation) — Forage, Jun 2026",
     "Data Analytics Job Simulation — Deloitte via Forage, Jul 2026",
     "Data Analytics Job Simulation — Quantium via Forage, Aug 2026",
@@ -356,21 +357,18 @@ CERTIFICATIONS = [
     "AWS Certified Data Engineer – Associate (DEA-C01) Exam Prep — AWS, May 2026",
     "Exploring SAP Analytics Cloud — SAP Learning, Jun 2026",
     "Becoming an SAP Data Architect — SAP Learning, Jun 2026",
-    "OCI Foundations Associate — Oracle",
-    "Responsive Web Design — freeCodeCamp",
 ]
 
 # Condensed grouping used on the one-page resume.
 CERTIFICATIONS_RESUME = [
     "<b>AWS Training &amp; Certification:</b> Introduction to AWS &nbsp;·&nbsp; Cloud Practitioner "
     "(CLF-C02) Domain 1 &nbsp;·&nbsp; Data Engineer – Associate (DEA-C01) Exam Prep "
-    "&nbsp;·&nbsp; <b>Oracle:</b> OCI Foundations Associate",
-    "<b>Google:</b> Analytics Certification (ID 183723043) &nbsp;·&nbsp; AI Essentials "
-    "&nbsp;·&nbsp; <b>SAP Learning:</b> SAP Analytics Cloud &nbsp;·&nbsp; SAP Data Architect "
-    "&nbsp;·&nbsp; <b>freeCodeCamp:</b> Responsive Web Design",
-    "<b>Forage Job Simulations:</b> Deloitte Data Analytics &nbsp;·&nbsp; Quantium Data Analytics "
-    "&nbsp;·&nbsp; GenAI-Powered Data Analytics &nbsp;·&nbsp; <b>Recognition:</b> Campus "
-    "Ambassador, SmartED (2026) &nbsp;·&nbsp; Participant, HackDevengers 1.0 (2026)",
+    "&nbsp;·&nbsp; <b>Google:</b> Analytics Certification, valid to May 2027 (ID 183723043)",
+    "<b>SAP Learning:</b> Exploring SAP Analytics Cloud &nbsp;·&nbsp; Becoming an SAP Data "
+    "Architect &nbsp;·&nbsp; <b>Forage Job Simulations:</b> Deloitte Data Analytics "
+    "&nbsp;·&nbsp; Quantium Data Analytics &nbsp;·&nbsp; GenAI-Powered Data Analytics",
+    "<b>Recognition:</b> Campus Ambassador, SmartED (2026) &nbsp;·&nbsp; Participant, "
+    "HackDevengers 1.0 (2026)",
 ]
 
 ACHIEVEMENTS = [
@@ -378,8 +376,8 @@ ACHIEVEMENTS = [
     "schema, six test suites and CI, with 636 assertions passing over the API and zero failures.",
     "Trained and measured four YOLO11 detector variants on RDD2022, reaching mAP50 0.471 on held-out "
     "validation and publishing the per-class breakdown including the classes that perform badly.",
-    "Earned 12 professional certifications across data analytics, cloud (AWS &amp; Oracle), SAP and web "
-    "development, including three Forage job simulations (Deloitte, Quantium, GenAI analytics).",
+    "Earned nine professional certifications across data analytics and cloud — AWS, Google and "
+    "SAP — including three Forage job simulations (Deloitte, Quantium, GenAI analytics).",
     "Participant, HackDevengers 1.0 hackathon — organised by Devengers, 2026.",
     "Scored 94.8% in Class XII and 81.17% in Class X; recognised as Campus Ambassador, SmartED (2026).",
     "Designed, built and deployed a dependency-free personal portfolio at saatwik-1157.github.io.",
@@ -400,7 +398,7 @@ SKILLS_RESUME = [
     ("Data, ML &amp; BI", "pandas, NumPy, scikit-learn, Ultralytics YOLO11, ONNX, EDA, walk-forward "
                           "back-testing, conformal prediction, Monte Carlo, Power BI, Tableau, "
                           "Matplotlib, Excel dashboards"),
-    ("Cloud, Tooling &amp; QA", "AWS, Oracle Cloud (OCI), Docker &amp; Compose, Git, GitHub Actions CI, "
+    ("Cloud, Tooling &amp; QA", "AWS, Docker &amp; Compose, Git, GitHub Actions CI, "
                                 "Gradle, Vitest, ESLint"),
 ]
 

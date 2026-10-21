@@ -3,22 +3,22 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Saatwik Sairaam Vasamsetti — Full-Stack Software Engineer &amp; Data Analyst</title>
-<meta name="description" content="Portfolio of Saatwik Sairaam Vasamsetti — Full-Stack Software Engineer and Data Analyst. TypeScript, Fastify, PostgreSQL, React, Next.js, Kotlin, Python, YOLO11, SQL, Power BI and cloud." />
+<title>Saatwik Sairaam Vasamsetti — Full-Stack Web Developer &amp; Software Engineer</title>
+<meta name="description" content="Portfolio of Saatwik Sairaam Vasamsetti — Full-Stack Web Developer and Software Engineer. TypeScript, Fastify, PostgreSQL, React, Next.js, Kotlin, Python, YOLO11, SQL, Power BI and cloud." />
 <meta name="author" content="Saatwik Sairaam Vasamsetti" />
 <meta name="theme-color" content="#14101a" />
 <link rel="canonical" href="https://saatwik-1157.github.io/" />
 
 <!-- Open Graph / social preview -->
 <meta property="og:type" content="profile" />
-<meta property="og:title" content="Saatwik Sairaam Vasamsetti — Full-Stack Software Engineer &amp; Data Analyst" />
+<meta property="og:title" content="Saatwik Sairaam Vasamsetti — Full-Stack Web Developer &amp; Software Engineer" />
 <meta property="og:description" content="I build complete systems and prove they work — research tooling where every number is machine-checked back to its source, and a 64-route TypeScript API on PostgreSQL/PostGIS passing 636 assertions." />
 <meta property="og:url" content="https://saatwik-1157.github.io/" />
 <meta property="og:image" content="https://saatwik-1157.github.io/og-image.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Saatwik Sairaam Vasamsetti — Full-Stack Software Engineer &amp; Data Analyst" />
+<meta name="twitter:title" content="Saatwik Sairaam Vasamsetti — Full-Stack Web Developer &amp; Software Engineer" />
 <meta name="twitter:description" content="Platform engineering, machine learning and data pipelines — measured, not asserted. Portfolio, résumé and CV." />
 <meta name="twitter:image" content="https://saatwik-1157.github.io/og-image.png" />
 
@@ -29,7 +29,7 @@
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Saatwik Sairaam Vasamsetti",
-  "jobTitle": "Full-Stack Software Engineer & Data Analyst",
+  "jobTitle": "Full-Stack Web Developer & Software Engineer",
   "email": "mailto:saathwik.13@gmail.com",
   "url": "https://saatwik-1157.github.io/",
   "address": { "@type": "PostalAddress", "addressRegion": "Andhra Pradesh", "addressCountry": "India" },
@@ -196,6 +196,9 @@
   .p-links{display:flex; gap:18px;}
   .p-links a{font-family:var(--display); font-size:13.5px; font-weight:600; color:var(--text); text-decoration:none; display:inline-flex; align-items:center; gap:6px; transition:color .18s;}
   .p-links a:hover{color:var(--cyan);}
+  /* Shown instead of a Code link when the repository is not public, so the card
+     never offers a link that 404s. */
+  .p-links .p-private{font-family:var(--display); font-size:13.5px; font-weight:600; color:var(--faint); display:inline-flex; align-items:center; gap:6px;}
 
   /* ---------- CERTS ---------- */
   .cert-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
@@ -304,9 +307,9 @@
     -->
     <div class="hero-inner hero-split">
       <div class="hero-text">
-        <span class="eyebrow">Software Engineering · Data · Machine Learning</span>
+        <span class="eyebrow">Web Development · Software Engineering · Data</span>
         <span class="hand grad-text">Hi, I'm Saatwik, a</span>
-        <h1><span class="grad-text">Software Engineer</span><br><span class="grad-text">&amp; Data Analyst.</span></h1>
+        <h1><span class="grad-text">Web Developer</span><br><span class="grad-text">&amp; Software Engineer.</span></h1>
         <p class="role">I build <b>complete systems</b> and prove they work. In <b>Trade Research</b> every number is computed and machine-checked back to its source — and the honest negative result gets reported. In <b>RoadAssist Bharat</b> a <b>64-route TypeScript API</b> on PostgreSQL/PostGIS passes <b>636 assertions</b>, with a Kotlin Compose client and a YOLO11 vision pipeline beside it.</p>
         <div class="cta-row">
           <a class="btn btn-primary" href="#projects">View my work →</a>
@@ -382,7 +385,7 @@
           <div class="tags"><span class="tag">Python</span><span class="tag">scikit-learn</span><span class="tag">pandas</span><span class="tag">FastAPI</span><span class="tag">PostgreSQL</span><span class="tag">React</span><span class="tag">MetaTrader 5</span></div>
           <div class="proj-foot">
             <span class="p-index grad-text">P&middot;01</span>
-            <div class="p-links"><a href="https://github.com/saatwik-1157/trade-research" target="_blank" rel="noopener">Code &#8599;</a></div>
+            <div class="p-links"><span class="p-private">Private repository</span></div>
           </div>
         </article>
         <article class="proj reveal">
@@ -419,13 +422,24 @@
           </div>
         </article>
         <article class="proj reveal">
+          <div class="p-cat">Frontend • Angular</div>
+          <h3>Angular Applications</h3>
+          <p>Four <b>Angular 22</b> applications built on standalone components and signals in a zoneless app: <b>ShopCart</b>, a full e-commerce site with a searchable, category-filtered catalogue, a quantity-aware cart with computed totals and accounts behind a route guard; a notes app backed by a service-owned signal; a live-filtering search template; and an authentication app with a guarded home route. ShopCart carries <b>14 Vitest unit tests</b> across cart, accounts and header.</p>
+          <span class="stack-label">Technical Stack</span>
+          <div class="tags"><span class="tag">Angular 22</span><span class="tag">TypeScript 6</span><span class="tag">Signals</span><span class="tag">Vitest</span><span class="tag">Route Guards</span></div>
+          <div class="proj-foot">
+            <span class="p-index grad-text">P&middot;05</span>
+            <div class="p-links"><span class="p-private">Coursework repository</span></div>
+          </div>
+        </article>
+        <article class="proj reveal">
           <div class="p-cat">Full-Stack • Platform</div>
           <h3>SkillForge</h3>
           <p>An end-to-end <b>entrepreneurship platform</b> that turns skills into businesses — a recommendation engine scoring <b>150+ business ideas</b> against your skills, budget and time, plus JWT auth with rotating refresh tokens and RBAC, mentor booking, courses with auto-issued certificates, and an admin console.</p>
           <span class="stack-label">Technical Stack</span>
           <div class="tags"><span class="tag">TypeScript</span><span class="tag">Next.js 15</span><span class="tag">React 19</span><span class="tag">PostgreSQL</span><span class="tag">Prisma</span><span class="tag">Docker</span></div>
           <div class="proj-foot">
-            <span class="p-index grad-text">P&middot;05</span>
+            <span class="p-index grad-text">P&middot;06</span>
             <div class="p-links"><a href="https://github.com/saatwik-1157/skillforge" target="_blank" rel="noopener">Code &#8599;</a></div>
           </div>
         </article>
@@ -436,8 +450,8 @@
           <span class="stack-label">Technical Stack</span>
           <div class="tags"><span class="tag">MySQL</span><span class="tag">JavaScript</span><span class="tag">Chart.js</span><span class="tag">CSS3</span></div>
           <div class="proj-foot">
-            <span class="p-index grad-text">P&middot;06</span>
-            <div class="p-links"><a href="https://github.com/saatwik-1157/smart_university_management-system_dbms" target="_blank" rel="noopener">Code &#8599;</a></div>
+            <span class="p-index grad-text">P&middot;07</span>
+            <div class="p-links"><a href="https://github.com/saatwik-1157/database_management_SUMS" target="_blank" rel="noopener">Code &#8599;</a></div>
           </div>
         </article>
         <article class="proj reveal">
@@ -447,19 +461,8 @@
           <span class="stack-label">Technical Stack</span>
           <div class="tags"><span class="tag">JavaScript</span><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">localStorage</span></div>
           <div class="proj-foot">
-            <span class="p-index grad-text">P&middot;07</span>
-            <div class="p-links"><a href="https://github.com/saatwik-1157/offerpilot" target="_blank" rel="noopener">Code &#8599;</a></div>
-          </div>
-        </article>
-        <article class="proj reveal">
-          <div class="p-cat">Mobile • Android</div>
-          <h3>ExamPlanner</h3>
-          <p>A comprehensive <b>Android app</b> that helps students organise study schedules and track exams — with secure authentication, exam management, and a built-in <b>Pomodoro timer</b> with customisable focus and break intervals.</p>
-          <span class="stack-label">Technical Stack</span>
-          <div class="tags"><span class="tag">Kotlin</span><span class="tag">Android</span><span class="tag">Java</span></div>
-          <div class="proj-foot">
             <span class="p-index grad-text">P&middot;08</span>
-            <div class="p-links"><a href="https://github.com/saatwik-1157/ExamPlanner" target="_blank" rel="noopener">Code &#8599;</a></div>
+            <div class="p-links"><a href="https://github.com/saatwik-1157/offerpilot" target="_blank" rel="noopener">Code &#8599;</a></div>
           </div>
         </article>
         <article class="proj reveal">
@@ -471,28 +474,6 @@
           <div class="proj-foot">
             <span class="p-index grad-text">P&middot;09</span>
             <div class="p-links"><a href="https://github.com/saatwik-1157/project_PathAhead" target="_blank" rel="noopener">Code &#8599;</a></div>
-          </div>
-        </article>
-        <article class="proj reveal">
-          <div class="p-cat">Front-End • UI Clone</div>
-          <h3>YouTube Clone</h3>
-          <p>A modern, responsive <b>YouTube UI clone</b> in vanilla JavaScript demonstrating dynamic rendering, accessible (A11y) components, and a mobile-first layout that works across desktop, tablet, and mobile.</p>
-          <span class="stack-label">Technical Stack</span>
-          <div class="tags"><span class="tag">JavaScript</span><span class="tag">CSS</span><span class="tag">HTML</span></div>
-          <div class="proj-foot">
-            <span class="p-index grad-text">P&middot;10</span>
-            <div class="p-links"><a href="https://github.com/saatwik-1157/youtube-clone" target="_blank" rel="noopener">Code &#8599;</a></div>
-          </div>
-        </article>
-        <article class="proj reveal">
-          <div class="p-cat">Python • CLI</div>
-          <h3>Python ATM</h3>
-          <p>A terminal-based <b>ATM simulator in Python</b> with JSON persistence — PIN login with attempt limits, account registration, and balance, deposit, and withdrawal operations.</p>
-          <span class="stack-label">Technical Stack</span>
-          <div class="tags"><span class="tag">Python</span><span class="tag">JSON</span><span class="tag">CLI</span></div>
-          <div class="proj-foot">
-            <span class="p-index grad-text">P&middot;11</span>
-            <div class="p-links"><a href="https://github.com/saatwik-1157/python-atm" target="_blank" rel="noopener">Code &#8599;</a></div>
           </div>
         </article>
       </div>

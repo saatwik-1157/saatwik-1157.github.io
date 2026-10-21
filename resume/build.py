@@ -267,8 +267,10 @@ def resume_story(st, width):
     s += section(st, "Education") + education(st, width, courses=False)
     s += section(st, "Technical Skills") + skills(st, data.SKILLS_RESUME)
     s += section(st, "Projects") + projects(st, width, "resume")
-    s += section(st, "Experience & Leadership")
-    s += experience(st, width, data.EXPERIENCE_RESUME_BULLETS, resume=True)
+    # A heading with nothing under it is worse than no heading.
+    exp = experience(st, width, data.EXPERIENCE_RESUME_BULLETS, resume=True)
+    if exp:
+        s += section(st, "Experience & Leadership") + exp
     s += section(st, "Certifications & Recognition")
     s += bullets(st, data.CERTIFICATIONS_RESUME)
     return s

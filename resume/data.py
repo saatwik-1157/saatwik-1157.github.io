@@ -11,7 +11,7 @@ RoadAssist claims gate exists to catch.
 
 PROFILE = {
     "name": "Saatwik Sairaam Vasamsetti",
-    "title": "Full-Stack Software Engineer · Data & Analytics",
+    "title": "Full-Stack Web Developer · Software Engineer",
     "location": "Andhra Pradesh, India",
     "phone": "+91-9989057655",
     "email": "saathwik.13@gmail.com",
@@ -98,7 +98,8 @@ PROJECTS = [
         "name": "Trade Research — Verifiable Research & Execution Platform",
         "dates": "Aug – Sep 2026",
         "stack": "Python, scikit-learn, pandas, FastAPI, PostgreSQL, React, MetaTrader 5, PyInstaller",
-        "repo": "github.com/saatwik-1157/trade-research",
+        # The repo is private, so printing the URL would hand a reader a 404.
+        "repo": "Private repository — available on request",
         "resume": True,
         "cv": True,
         "resume_bullets": [
@@ -170,8 +171,9 @@ PROJECTS = [
         "resume": True,
         "cv": True,
         "resume_bullets": [
-            'Architected a Next.js 15 / React 19 front end over an Express + Prisma API on PostgreSQL 16, containerised with Docker Compose.',
-            "Built a recommendation engine scoring 150+ business ideas against a user's skills, budget and time, behind JWT auth with rotating refresh tokens, OTP verification and RBAC.",
+            "Architected a Next.js 15 / React 19 front end over an Express + Prisma API on PostgreSQL "
+            "16, with a recommendation engine scoring 150+ business ideas and JWT auth using rotating "
+            "refresh tokens, OTP verification and RBAC.",
         ],
         "bullets": [
             "Architected a full-stack monorepo turning skills into businesses: a Next.js 15 / React 19 "
@@ -191,11 +193,13 @@ PROJECTS = [
         "dates": "Smart India Hackathon 2026",
         "stack": "Python, FastAPI, JavaScript, Canvas",
         "repo": "github.com/saatwik-1157/machinesense-ai",
-        "resume": True,
+        "resume": False,
         "cv": True,
         "resume_bullets": [
-            'Built a FastAPI predictive-maintenance platform: weighted 0-100 health scoring, MAD z-score anomaly detection, remaining-useful-life forecasting and fleet energy optimisation.',
-            'Made every score explainable by sensor with plain-language root causes, and added a digital twin that simulates a maintenance action before anyone touches the machine.',
+            "Built a FastAPI predictive-maintenance platform — weighted 0-100 health scoring, MAD "
+            "z-score anomaly detection, remaining-useful-life forecasting and energy optimisation — "
+            "with every score explained by sensor and a digital twin that simulates a maintenance "
+            "action first.",
         ],
         "bullets": [
             "Built an Industry 4.0 prototype for Indian industrial units: a FastAPI backend simulating a "
@@ -216,8 +220,17 @@ PROJECTS = [
         "dates": "Sep 2026",
         "stack": "TypeScript, Node 24, Meta Ads API, Anthropic SDK, webhooks",
         "repo": "github.com/saatwik-1157/ads-voice-revenue-loop",
-        "resume": False,
+        "resume": True,
         "cv": True,
+        "resume_bullets": [
+            "Implemented an AI orchestrator closing the ads → voice → revenue loop: it "
+            "publishes a guarded Meta campaign, routes each lead to a voice agent, reads structured "
+            "call outcomes back, and decides KEEP / KILL / ITERATE / SCALE from revenue rather than "
+            "clicks.",
+            "Carried campaign, adset, ad and creative identifiers through the full round trip, so a "
+            "sale attributes to the exact hook that paid for it; spend sits behind guardrails and two "
+            "human approval gates.",
+        ],
         "bullets": [
             "Implemented an AI orchestrator that picks a niche, writes the offer and creative, publishes "
             "a guarded Meta test campaign, hands each lead to a voice agent, reads structured call "
@@ -233,7 +246,7 @@ PROJECTS = [
         "name": "Smart University Management System (SUMS)",
         "dates": "2026",
         "stack": "MySQL, JavaScript, Chart.js, CSS3",
-        "repo": "github.com/saatwik-1157/smart_university_management-system_dbms",
+        "repo": "github.com/saatwik-1157/database_management_SUMS",
         "resume": False,
         "cv": True,
         "bullets": [
@@ -262,24 +275,40 @@ PROJECTS = [
         ],
     },
     {
-        "name": "ShopCart — Angular E-Commerce Application",
+        "name": "Angular Applications — ShopCart, Notes, Search & Auth",
         "dates": "2026",
-        "stack": "Angular, TypeScript, Signals, Vitest",
-        "repo": "Frontend Design & Testing Lab (SWE3004)",
-        "resume": False,
+        "stack": "Angular 22, TypeScript 6, standalone components, signals, Vitest",
+        "repo": None,
+        "resume": True,
         "cv": True,
+        "resume_bullets": [
+            "Built four Angular 22 applications on standalone components and signals in a zoneless "
+            "app: ShopCart, a full e-commerce site; a notes app; a live-filtering search template; "
+            "and an authentication app with a guarded route.",
+            "ShopCart is the largest: searchable, category-filtered catalogue, product detail pages, a "
+            "quantity-aware cart with computed totals and accounts behind a route guard, covered by 14 "
+            "Vitest unit tests across three files.",
+        ],
         "bullets": [
-            "Built a signal-based Angular storefront: searchable and category-filtered catalogue, "
-            "product detail pages, a quantity-aware cart with computed totals, and accounts with a "
-            "route guard protecting checkout.",
-            "Covered cart, accounts and header behaviour with 14 Vitest unit tests across three files.",
+            "<b>ShopCart (e-commerce):</b> searchable, category-filtered catalogue, product detail "
+            "pages, a quantity-aware cart with computed totals, and signup/sign-in with a route guard "
+            "protecting checkout — 14 Vitest unit tests across cart, accounts and header.",
+            "<b>Search template:</b> a user list loaded from JSON through a service and filtered on "
+            "screen as the query is typed, matching on either name or email address.",
+            "<b>Notes app:</b> add, update and delete notes held in a service-owned signal, rendered "
+            "through separate form, list and single-note components.",
+            "<b>Authentication app:</b> a login page validated in a service, with the home page "
+            "reachable only through a route guard after a successful sign-in.",
+            "Every experiment's lab record is generated from the live source on disk rather than "
+            "written by hand, so the submitted document cannot disagree with the code that ran.",
         ],
     },
     {
         "name": "ExamPlanner — Android Study Planner",
         "dates": "2026",
         "stack": "Kotlin, Android, Java",
-        "repo": "github.com/saatwik-1157/ExamPlanner",
+        # Private repository; no link rather than a 404.
+        "repo": None,
         "resume": False,
         "cv": True,
         "bullets": [
@@ -301,7 +330,7 @@ PROJECTS = [
         ],
     },
     {
-        "name": "Additional public repositories",
+        "name": "Additional projects",
         "dates": None,
         "stack": None,
         "repo": None,
@@ -313,9 +342,6 @@ PROJECTS = [
             "Gemini Chat Client — a complete browser-only chat client: multi-thread sidebar, four "
             "personas, vision and voice input, Markdown rendering sanitised with DOMPurify, "
             "localStorage persistence, no server and no build step.",
-            "YouTube Clone — responsive vanilla-JS UI clone with dynamic rendering and accessible "
-            "components; Python ATM — CLI banking simulator with JSON persistence and PIN attempt "
-            "limits; Assistant Bot — rule-based study helper that runs with the network off.",
         ],
     },
 ]
@@ -325,6 +351,7 @@ EXPERIENCE = [
         "role": "Campus Ambassador",
         "org": "SmartED",
         "dates": "Jun 2026",
+        "resume": False,
         "bullets": [
             "Led campus outreach for SmartED's initiatives; formally recognised for leadership, "
             "dedication and the connections built across the student community.",
@@ -361,14 +388,12 @@ CERTIFICATIONS = [
 
 # Condensed grouping used on the one-page resume.
 CERTIFICATIONS_RESUME = [
-    "<b>AWS Training &amp; Certification:</b> Introduction to AWS &nbsp;·&nbsp; Cloud Practitioner "
-    "(CLF-C02) Domain 1 &nbsp;·&nbsp; Data Engineer – Associate (DEA-C01) Exam Prep "
-    "&nbsp;·&nbsp; <b>Google:</b> Analytics Certification, valid to May 2027 (ID 183723043)",
-    "<b>SAP Learning:</b> Exploring SAP Analytics Cloud &nbsp;·&nbsp; Becoming an SAP Data "
-    "Architect &nbsp;·&nbsp; <b>Forage Job Simulations:</b> Deloitte Data Analytics "
-    "&nbsp;·&nbsp; Quantium Data Analytics &nbsp;·&nbsp; GenAI-Powered Data Analytics",
-    "<b>Recognition:</b> Campus Ambassador, SmartED (2026) &nbsp;·&nbsp; Participant, "
-    "HackDevengers 1.0 (2026)",
+    "<b>AWS:</b> Introduction to AWS &nbsp;·&nbsp; Cloud Practitioner (CLF-C02) Domain 1 "
+    "&nbsp;·&nbsp; Data Engineer – Associate (DEA-C01) Prep &nbsp;·&nbsp; "
+    "<b>Google:</b> Analytics Certification, to May 2027 (ID 183723043)",
+    "<b>SAP Learning:</b> SAP Analytics Cloud &nbsp;·&nbsp; SAP Data Architect "
+    "&nbsp;·&nbsp; <b>Forage:</b> Deloitte, Quantium, GenAI Analytics &nbsp;·&nbsp; "
+    "Campus Ambassador, SmartED &nbsp;·&nbsp; HackDevengers 1.0",
 ]
 
 ACHIEVEMENTS = [

@@ -78,9 +78,9 @@ SKILLS = [
     ("Languages", "TypeScript, JavaScript, Python, Kotlin, SQL, Java, HTML, CSS"),
     ("Backend & APIs", "Node.js, Fastify, Express, FastAPI, REST design, JWT auth with rotating "
                        "refresh tokens, RBAC, Zod validation, webhooks"),
-    ("Frontend", "React 19, Next.js 15, Angular, Tailwind CSS, Jetpack Compose, progressive web apps, "
+    ("Frontend", "React 19, Next.js 16, Angular, Tailwind CSS, Jetpack Compose, progressive web apps, "
                  "dependency-free canvas UI, accessibility (A11y)"),
-    ("Databases", "PostgreSQL 16 + PostGIS, MySQL, Drizzle, Prisma, schema & index design, "
+    ("Databases", "PostgreSQL 16 + PostGIS, MySQL, Drizzle, schema & index design, "
                   "transactional concurrency control"),
     ("Data & ML", "pandas, NumPy, scikit-learn, Ultralytics YOLO11, ONNX, exploratory data analysis, "
                   "walk-forward back-testing, conformal prediction, Monte Carlo simulation"),
@@ -164,36 +164,11 @@ PROJECTS = [
         ],
     },
     {
-        "name": "SkillForge — Entrepreneurship Enablement Platform",
-        "dates": "2026",
-        "stack": "TypeScript, Next.js 15, React 19, Express, Prisma, PostgreSQL 16, Tailwind CSS, Docker",
-        "repo": "github.com/saatwik-1157/skillforge",
-        "resume": True,
-        "cv": True,
-        "resume_bullets": [
-            "Architected a Next.js 15 / React 19 front end over an Express + Prisma API on PostgreSQL "
-            "16, with a recommendation engine scoring 150+ business ideas and JWT auth using rotating "
-            "refresh tokens, OTP verification and RBAC.",
-        ],
-        "bullets": [
-            "Architected a full-stack monorepo turning skills into businesses: a Next.js 15 / React 19 "
-            "front end over an Express + Prisma API on PostgreSQL 16, containerised with Docker Compose.",
-            "Built a recommendation engine scoring 150+ business ideas against a user's skills, budget, "
-            "available time and preferred business type, backed by a business-readiness assessment.",
-            "Implemented production-grade auth — JWT with rotating refresh tokens, OTP email "
-            "verification, password reset, Google login and role-based access control across "
-            "entrepreneur, mentor and admin roles.",
-            "Shipped the surrounding product: mentor booking with reviews, courses with auto-issued "
-            "certificates, a threaded community forum, notifications, and an admin console for content "
-            "approval and analytics.",
-        ],
-    },
-    {
         "name": "MachineSense AI — Explainable Industrial Intelligence",
         "dates": "Smart India Hackathon 2026",
         "stack": "Python, FastAPI, JavaScript, Canvas",
         "repo": "github.com/saatwik-1157/machinesense-ai",
-        "resume": False,
+        "resume": True,
         "cv": True,
         "resume_bullets": [
             "Built a FastAPI predictive-maintenance platform — weighted 0-100 health scoring, MAD "
@@ -216,33 +191,6 @@ PROJECTS = [
         ],
     },
     {
-        "name": "Founder Labs Autopilot — Ads → Voice → Revenue Closed Loop",
-        "dates": "Sep 2026",
-        "stack": "TypeScript, Node 24, Meta Ads API, Anthropic SDK, webhooks",
-        "repo": "github.com/saatwik-1157/ads-voice-revenue-loop",
-        "resume": True,
-        "cv": True,
-        "resume_bullets": [
-            "Implemented an AI orchestrator closing the ads → voice → revenue loop: it "
-            "publishes a guarded Meta campaign, routes each lead to a voice agent, reads structured "
-            "call outcomes back, and decides KEEP / KILL / ITERATE / SCALE from revenue rather than "
-            "clicks.",
-            "Carried campaign, adset, ad and creative identifiers through the full round trip, so a "
-            "sale attributes to the exact hook that paid for it; spend sits behind guardrails and two "
-            "human approval gates.",
-        ],
-        "bullets": [
-            "Implemented an AI orchestrator that picks a niche, writes the offer and creative, publishes "
-            "a guarded Meta test campaign, hands each lead to a voice agent, reads structured call "
-            "outcomes back, and decides KEEP / KILL / ITERATE / SCALE from revenue rather than clicks.",
-            "Carried campaign, adset, ad and creative identifiers from the lead form through the voice "
-            "agent's call metadata and back on the post-call webhook — the round trip that lets a sale "
-            "be attributed to the exact hook that paid for it.",
-            "Put spend behind guardrails and two human approval gates, and made the whole loop runnable "
-            "against mock providers so it demonstrates end to end with no ad spend and no phone calls.",
-        ],
-    },
-    {
         "name": "Smart University Management System (SUMS)",
         "dates": "2026",
         "stack": "MySQL, JavaScript, Chart.js, CSS3",
@@ -261,7 +209,7 @@ PROJECTS = [
         "dates": "2026",
         "stack": "JavaScript, HTML, CSS, localStorage",
         "repo": "github.com/saatwik-1157/offerpilot",
-        "resume": False,
+        "resume": True,
         "cv": True,
         "bullets": [
             "Built a dependency-free static platform — marketing site, onboarding, client dashboard, "
@@ -416,9 +364,9 @@ ACHIEVEMENTS = [
 SKILLS_RESUME = [
     ("Languages", "TypeScript, JavaScript, Python, Kotlin, SQL, Java, HTML, CSS"),
     ("Backend &amp; Data Stores", "Node.js, Fastify, Express, FastAPI, REST design, JWT/RBAC auth, "
-                                  "PostgreSQL 16 + PostGIS, MySQL, Drizzle, Prisma, schema &amp; index "
+                                  "PostgreSQL 16 + PostGIS, MySQL, Drizzle, schema &amp; index "
                                   "design, transactional concurrency"),
-    ("Frontend", "React 19, Next.js 15, Angular, Tailwind CSS, Jetpack Compose, progressive web apps, "
+    ("Frontend", "React 19, Next.js 16, Angular, Tailwind CSS, Jetpack Compose, progressive web apps, "
                  "dependency-free canvas UI, accessibility"),
     ("Data, ML &amp; BI", "pandas, NumPy, scikit-learn, Ultralytics YOLO11, ONNX, EDA, walk-forward "
                           "back-testing, conformal prediction, Monte Carlo, Power BI, Tableau, "

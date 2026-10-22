@@ -53,11 +53,15 @@ To move a project onto the résumé, set `"resume": True` and give it a
 
 ## Design
 
-One accent colour (`#1B3A5F`) carries the name, the section headings and the
-rules; everything else is black on white. The phone, email, GitHub, LinkedIn
-and portfolio entries in the header are real hyperlinks, as are the repository
-lines under each CV project — a reader on a laptop can open the code from the
-document instead of retyping a URL.
+Black and white, no colour anywhere. Hierarchy comes from weight, size and
+rules rather than hue, and the only greys are for dates and stack lines — they
+photocopy and fax as grey rather than turning muddy. Verified per document: no
+text span renders with `r != g != b`.
+
+The phone, email, GitHub, LinkedIn and portfolio entries in the header are
+still real hyperlinks, as are the repository lines under each CV project —
+they simply render black now, so a reader on a laptop can open the code from
+the document while a printed copy loses nothing.
 
 Both files stay plain text under the hood, so an applicant tracking system
 parses them: no images, no text in tables that carry meaning, no columns

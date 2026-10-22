@@ -39,10 +39,12 @@ import data  # noqa: E402
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.dirname(HERE)  # repo root -- index.html links the PDFs from there
 
-INK = colors.HexColor("#14161A")     # body text
-MUTED = colors.HexColor("#4A5159")    # dates, stack lines
-ACCENT = colors.HexColor("#1B3A5F")   # name, section headings, links
-RULE = colors.HexColor("#1B3A5F")
+# Black and white only. Greys are kept for hierarchy -- they print and
+# photocopy as grey, not as a colour -- but nothing carries a hue.
+INK = colors.HexColor("#000000")     # body text
+MUTED = colors.HexColor("#555555")    # dates, stack lines
+ACCENT = colors.HexColor("#000000")   # name, section headings, links
+RULE = colors.HexColor("#000000")
 
 
 # --- styles -------------------------------------------------------------------
@@ -99,7 +101,7 @@ def styles(size):
 
 def link(text, href):
     """A hyperlink the reader can actually click in the PDF."""
-    return '<link href="%s" color="#1B3A5F">%s</link>' % (href, text)
+    return '<link href="%s" color="#000000">%s</link>' % (href, text)
 
 
 def header(st, p, with_title):

@@ -278,6 +278,21 @@ PROJECTS = [
         ],
     },
     {
+        "name": "PathAhead — Career-Guidance Platform Website",
+        "dates": "2026",
+        "stack": "HTML, CSS, JavaScript, Python",
+        "repo": "github.com/saatwik-1157/project_PathAhead",
+        "resume": False,
+        "cv": True,
+        "bullets": [
+            "Built the complete brand website for PathAhead, an EdTech initiative running "
+            "career-awareness workshops for Intermediate students across India — a premium, "
+            "responsive, production-ready multi-page site across 45 commits.",
+            "Shipped the surrounding promotional kit alongside it: presentation, brochure and "
+            "tri-fold materials, so the launch did not depend on a separate design pass.",
+        ],
+    },
+    {
         "name": "Additional projects",
         "dates": None,
         "stack": None,
@@ -285,8 +300,6 @@ PROJECTS = [
         "resume": False,
         "cv": True,
         "bullets": [
-            "PathAhead — production-ready responsive site for a career-guidance platform running "
-            "workshops for intermediate students across India (41 commits).",
             "Gemini Chat Client — a complete browser-only chat client: multi-thread sidebar, four "
             "personas, vision and voice input, Markdown rendering sanitised with DOMPurify, "
             "localStorage persistence, no server and no build step.",

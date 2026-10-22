@@ -1,8 +1,11 @@
 # Saatwik Sairaam Vasamsetti — Portfolio
 
 A single-file personal portfolio: one `index.html` carrying the markup, the
-styles and the canvas animation, with no build step, no framework and no
-runtime dependencies. Open the file and it runs.
+styles and the canvas animation, with no build step and no framework. The
+only external request is Google Fonts, and the page falls back to system fonts
+without it. Open the file and it runs.
+
+Live at **<https://saatwik-1157.github.io/>** (GitHub Pages user site).
 
 **Built by Saatwik Sairaam Vasamsetti** · [github.com/saatwik-1157](https://github.com/saatwik-1157)
 
@@ -12,13 +15,14 @@ A portfolio is read once, quickly, usually on a phone, often on a bad
 connection. Every dependency is a request that can fail before the page paints.
 Keeping the whole site in one document means:
 
-- **One request** for everything above the fold — no CSS or JS round-trip.
+- **One request** for the page itself — no separate CSS or JS round-trip.
 - **Nothing to build.** No toolchain to re-learn a year from now when a
   recruiter asks for an update and the Node version has moved on twice.
 - **Nothing to break.** No package can be yanked, deprecated or CVE'd out from
   under a static page that imports nothing.
 
-The cost is a 674-line HTML file. That is the trade, made deliberately.
+The cost is a single HTML file of roughly 740 lines. That is the trade, made
+deliberately.
 
 ## What's on the page
 
@@ -32,42 +36,65 @@ The cost is a 674-line HTML file. That is the trade, made deliberately.
 | `#certs`      | Certifications                                                    |
 | `#contact`    | Direct contact routes                                             |
 
-Also bundled: `Saatwik-Vasamsetti-Resume.pdf`, `Saatwik-Vasamsetti-CV.pdf` and
-`Saatwik-Internship-Toolkit.pdf`, linked from the page so a visitor can leave
-with the document rather than a screenshot.
+Also published: `Saatwik-Vasamsetti-Resume.pdf` and `Saatwik-Vasamsetti-CV.pdf`,
+linked from the page so a visitor can leave with the document rather than a
+screenshot.
 
 The first two are build output, not hand-made files. Their content lives in
 `resume/data.py` and is rendered by `python resume/build.py` — see
 [resume/README.md](resume/README.md).
 
-## Run it
+## Preview locally
+
+From the repository root:
 
 ```bash
-python -m http.server 8000
+python -m http.server 8500
 ```
 
-Then open <http://localhost:8000>. Opening `index.html` directly from the
+Then open <http://localhost:8500>. Opening `index.html` directly from the
 filesystem also works — nothing on the page needs an origin.
 
 ## Deploy
 
-Any static host serves this as-is: GitHub Pages, Netlify, Vercel, Cloudflare
-Pages. There is no build command and no output directory — publish the repo
-root.
+This repository is the GitHub Pages user site for `saatwik-1157`, so
+**deploying is pushing to `main`**. Pages serves the repository root as-is at
+<https://saatwik-1157.github.io/>; there is no build command, no workflow and
+no output directory.
 
-## Layout
+Because the site is served straight from the root, **file paths are public
+URLs**. `index.html`, the two PDFs, `og-image.png` and `assets/` are linked
+from the page, from the social-preview meta tags and possibly from résumés
+already sent out, so do not rename or move them.
+
+If the résumé content changes, rebuild the PDFs before pushing (see
+[resume/README.md](resume/README.md)).
+
+## Project structure
 
 ```
-index.html                      the entire site
-index-classic-backup.html       previous design, kept for reference
-og-image.png                    social preview card
-assets/saatwik.jpg              portrait
-Saatwik-Vasamsetti-Resume.pdf   linked from #contact — built from resume/
-Saatwik-Vasamsetti-CV.pdf                              — built from resume/
-Saatwik-Internship-Toolkit.pdf
-resume/data.py                  résumé and CV content
-resume/build.py                 renders both PDFs
+saatwik-1157.github.io/
+├── index.html                      the entire site (markup, styles, script)
+├── og-image.png                    social preview card (og:image / twitter:image)
+├── assets/
+│   └── saatwik.jpg                 portrait
+├── Saatwik-Vasamsetti-Resume.pdf   linked from the page — built from resume/
+├── Saatwik-Vasamsetti-CV.pdf       linked from the page — built from resume/
+├── resume/
+│   ├── data.py                     résumé and CV content
+│   ├── build.py                    renders both PDFs (reportlab)
+│   └── README.md
+├── .gitattributes                  marks PDFs and images binary
+├── .gitignore
+└── README.md
 ```
+
+Two files may exist in a local checkout but are git-ignored and never
+published: `index-classic-backup.html` (the previous design, kept locally for
+reference) and `Saatwik-Internship-Toolkit.pdf` (personal planning notes).
+
+**Tech:** HTML5, CSS3, vanilla JavaScript (canvas animation); Python +
+reportlab for the PDF build.
 
 ## Optional intro video
 

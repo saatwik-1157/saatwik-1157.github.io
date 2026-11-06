@@ -365,6 +365,7 @@ EXPERIENCE = [
 
 CERTIFICATIONS = [
     "Google Analytics Certification — Google, May 2026 – May 2027 (ID 183723043)",
+    "Data Fundamentals — IBM SkillsBuild, Jan 2026",
     "GenAI-Powered Data Analytics (Job Simulation) — Forage, Jun 2026",
     "Data Analytics Job Simulation — Deloitte via Forage, Jul 2026",
     "Data Analytics Job Simulation — Quantium via Forage, Aug 2026",
@@ -379,14 +380,14 @@ CERTIFICATIONS = [
 # Condensed grouping used on the one-page resume.
 CERTIFICATIONS_RESUME = [
     "<b>Google Analytics Certification</b> — Google, to May 2027",
+    "<b>Data Fundamentals</b> — IBM SkillsBuild",
     "<b>Introduction to AWS</b> — AWS Training &amp; Certification",
     "<b>Cloud Practitioner (CLF-C02) Domain 1 Review</b> — AWS",
     "<b>Data Engineer – Associate (DEA-C01) Exam Prep</b> — AWS",
     "<b>Exploring SAP Analytics Cloud</b> — SAP Learning",
     "<b>Becoming an SAP Data Architect</b> — SAP Learning",
     "<b>Architecting Agentic AI Business Solutions</b> — Microsoft Learn",
-    "<b>Data Analytics Job Simulation</b> — Quantium, via Forage",
-    "<b>Data Analytics Job Simulation</b> — Deloitte, via Forage",
+    "<b>Data Analytics Job Simulations</b> — Quantium and Deloitte, via Forage",
     "<b>GenAI-Powered Data Analytics Simulation</b> — Tata, via Forage",
 ]
 

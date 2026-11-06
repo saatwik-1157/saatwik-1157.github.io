@@ -139,15 +139,14 @@ PROJECTS = [
         "repo": "github.com/saatwik-1157/roadassist-bharat",
         "resume": True,
         "cv": True,
-        # Four-person course project (SWE4004). Saatwik's workstream is backend & cloud
-        # database; claim that, not the whole platform. Figures: app/docs/measured.json.
+        # SWE4004 course project. Saatwik confirmed on 2026-11-06 that he did all the work.
         "resume_bullets": [
-            'Led backend &amp; cloud database for a four-person team: an 86-route Fastify/TypeScript API over a 60-table PostgreSQL 16 + PostGIS schema with 151 indexes and 13 migrations.',
+            'Built solo as a SWE4004 course project: an 86-route Fastify/TypeScript API over a 60-table PostgreSQL 16 + PostGIS schema with 151 indexes and 13 migrations.',
             'Verified by 1,603 assertions across six suites with zero failures, including 112 concurrency tests and 144 refused security attacks.',
             'Made races impossible in the database rather than by timing: row locks with expiry re-checked under the lock, a partial unique index guaranteeing "paid once", and a hash-chained, immutable audit log.',
         ],
         "bullets": [
-            "Led the backend &amp; cloud-database workstream of a four-person team: an 86-route Fastify "
+            "Built the platform solo as a SWE4004 course project: an 86-route Fastify "
             "modular monolith over a 60-table PostGIS schema with 151 indexes and 13 migrations, "
             "serving four browser surfaces, a native Android client and a feature-phone SMS channel.",
             "Platform verified by 1,603 assertions across six suites, zero failures — including 144 "
@@ -400,7 +399,7 @@ RECOGNITION_RESUME = [
 ]
 
 ACHIEVEMENTS = [
-    "Led backend &amp; cloud database for RoadAssist Bharat, a four-person platform verified by "
+    "Built RoadAssist Bharat solo, a platform verified by "
     "1,603 assertions across six suites with zero failures.",
     "Earned ten professional certifications across data analytics and cloud — AWS, Google and "
     "SAP and Microsoft — including three Forage job simulations (Deloitte, Quantium, GenAI analytics).",

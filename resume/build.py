@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
-"""Render Saatwik-Vasamsetti-Resume.pdf and Saatwik-Vasamsetti-CV.pdf.
+"""Render a one-page resume and a CV from a data.py content file.
 
-    python resume/build.py
+    python build.py <folder containing data.py> [output folder]
+
+From the repository root: python resume/build.py resume .
 
 Content comes from resume/data.py; nothing is typed into a PDF by hand. The
 resume is held to one page and the build fails loudly if it spills, because a
@@ -19,7 +21,7 @@ import os
 import sys
 
 from reportlab.lib import colors
-from reportlab.lib.enums import TA_CENTER, TA_JUSTIFY
+from reportlab.lib.enums import TA_CENTER, TA_LEFT
 from reportlab.lib.pagesizes import LETTER
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.lib.units import inch
@@ -33,64 +35,92 @@ from reportlab.platypus import (
     TableStyle,
 )
 
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from reportlab.lib.fonts import addMapping
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont
+
+DATA_DIR = os.path.abspath(sys.argv[1]) if len(sys.argv) > 1 else os.path.dirname(os.path.abspath(__file__))
+OUT = os.path.abspath(sys.argv[2]) if len(sys.argv) > 2 else DATA_DIR
+os.makedirs(OUT, exist_ok=True)
+sys.path.insert(0, DATA_DIR)
 import data  # noqa: E402
 
-HERE = os.path.dirname(os.path.abspath(__file__))
-OUT = os.path.dirname(HERE)  # repo root -- index.html links the PDFs from there
+# Calibri: the Office default, clean at small sizes and parsed reliably by
+# applicant-tracking systems. Embedded, so the PDF looks the same everywhere.
+FONT_DIR = os.path.join(os.environ.get("WINDIR", "C:/Windows"), "Fonts")
+for face, fname in (("Body", "calibri.ttf"), ("Body-Bold", "calibrib.ttf"),
+                    ("Body-Italic", "calibrii.ttf"), ("Body-BoldItalic", "calibriz.ttf")):
+    pdfmetrics.registerFont(TTFont(face, os.path.join(FONT_DIR, fname)))
+addMapping("Body", 0, 0, "Body")
+addMapping("Body", 1, 0, "Body-Bold")
+addMapping("Body", 0, 1, "Body-Italic")
+addMapping("Body", 1, 1, "Body-BoldItalic")
+FILES = getattr(data, "FILES", None) or {
+    "resume": data.PROFILE["name"].replace(" ", "-") + "-Resume.pdf",
+    "cv": data.PROFILE["name"].replace(" ", "-") + "-CV.pdf",
+}
+EXPERIENCE_HEADING = getattr(data, "EXPERIENCE_HEADING", "Experience")
+# Education closes the document instead of following the summary.
+EDUCATION_LAST = getattr(data, "EDUCATION_LAST", False)
 
-INK = colors.HexColor("#14161A")     # body text
-MUTED = colors.HexColor("#4A5159")    # dates, stack lines
-ACCENT = colors.HexColor("#1B3A5F")   # name, section headings, links
-RULE = colors.HexColor("#1B3A5F")
+# reportlab's page frame insets every flowable by 6pt. Tables sized to the full
+# doc.width overhang that inset on both sides, so rows sat 6pt left of the text.
+FRAME_PAD = 6
+
+# Black and white only. Greys are kept for hierarchy -- they print and
+# photocopy as grey, not as a colour -- but nothing carries a hue.
+INK = colors.HexColor("#000000")     # body text
+MUTED = colors.HexColor("#555555")    # dates, stack lines
+ACCENT = colors.HexColor("#000000")   # name, section headings, links
+RULE = colors.HexColor("#000000")
 
 
 # --- styles -------------------------------------------------------------------
 
 def styles(size):
     """Build the stylesheet at a given body size so the resume can be squeezed."""
-    lead = size + 2.2
+    lead = size * 1.24
     return {
         "name": ParagraphStyle(
-            "name", fontName="Helvetica-Bold", fontSize=21, leading=24,
+            "name", fontName="Body-Bold", fontSize=23, leading=26,
             alignment=TA_CENTER, textColor=ACCENT, spaceAfter=1,
         ),
         "title": ParagraphStyle(
-            "title", fontName="Helvetica-Bold", fontSize=size + 0.6, leading=lead + 1,
+            "title", fontName="Body-Bold", fontSize=size + 0.6, leading=lead + 1,
             alignment=TA_CENTER, textColor=MUTED, spaceAfter=3,
         ),
         "contact": ParagraphStyle(
-            "contact", fontName="Helvetica", fontSize=size - 0.3, leading=lead,
+            "contact", fontName="Body", fontSize=size - 0.3, leading=lead,
             alignment=TA_CENTER, textColor=INK,
         ),
         "section": ParagraphStyle(
-            "section", fontName="Helvetica-Bold", fontSize=size + 1.1,
+            "section", fontName="Body-Bold", fontSize=size + 1.1,
             leading=size + 3, textColor=ACCENT, spaceBefore=4, spaceAfter=1.2,
         ),
         "entry": ParagraphStyle(
-            "entry", fontName="Helvetica-Bold", fontSize=size + 0.2, leading=lead,
+            "entry", fontName="Body-Bold", fontSize=size + 0.2, leading=lead,
             textColor=INK,
         ),
         "lead": ParagraphStyle(
-            "lead", fontName="Helvetica", fontSize=size, leading=lead + 0.4,
-            textColor=INK, alignment=TA_JUSTIFY, spaceAfter=1,
+            "lead", fontName="Body", fontSize=size, leading=lead + 0.4,
+            textColor=INK, alignment=TA_LEFT, spaceAfter=1,
         ),
         "entryright": ParagraphStyle(
-            "entryright", fontName="Helvetica-Oblique", fontSize=size - 0.3,
+            "entryright", fontName="Body-Italic", fontSize=size - 0.3,
             leading=lead, textColor=MUTED, alignment=2,
         ),
         "sub": ParagraphStyle(
-            "sub", fontName="Helvetica-Oblique", fontSize=size - 0.3, leading=lead,
+            "sub", fontName="Body-Italic", fontSize=size - 0.3, leading=lead,
             textColor=MUTED,
         ),
         "body": ParagraphStyle(
-            "body", fontName="Helvetica", fontSize=size, leading=lead,
-            textColor=INK, alignment=TA_JUSTIFY,
+            "body", fontName="Body", fontSize=size, leading=lead,
+            textColor=INK, alignment=TA_LEFT,
         ),
         "bullet": ParagraphStyle(
-            "bullet", fontName="Helvetica", fontSize=size, leading=lead,
-            textColor=INK, leftIndent=10, bulletIndent=1, spaceAfter=0.8,
-            alignment=TA_JUSTIFY,
+            "bullet", fontName="Body", fontSize=size, leading=lead,
+            textColor=INK, leftIndent=10, bulletIndent=1, spaceAfter=0.8, bulletFontName="Body",
+            alignment=TA_LEFT,
         ),
     }
 
@@ -99,7 +129,7 @@ def styles(size):
 
 def link(text, href):
     """A hyperlink the reader can actually click in the PDF."""
-    return '<link href="%s" color="#1B3A5F">%s</link>' % (href, text)
+    return '<link href="%s" color="#000000">%s</link>' % (href, text)
 
 
 def header(st, p, with_title):
@@ -156,13 +186,15 @@ def bullets(st, items):
 def education(st, width, courses=True):
     out = []
     for e in data.EDUCATION:
+        # School and dates on one line, qualification and score on the next.
         out.append(row(st, e["school"], e["dates"], width))
-        if e["degree"]:
-            out.append(row(st, "<i>%s</i>" % e["degree"], e["detail"], width))
+        if e["degree"] or e["detail"]:
+            out.append(row(st, "<i>%s</i>" % (e["degree"] or ""), e["detail"], width))
         if e["courses"] and courses:
             out.append(Paragraph("<b>Coursework:</b> " + e["courses"], st["sub"]))
         out.append(Spacer(1, 1.5))
-    return out
+    # Between entries only: as the last section, a trailing spacer can push a blank page.
+    return out[:-1]
 
 
 def skills(st, items=None):
@@ -177,7 +209,11 @@ def projects(st, width, key, max_bullets=None):
             continue
         head = [row(st, p["name"], p.get("dates"), width)]
         if p.get("stack"):
-            head.append(Paragraph("<b>Stack:</b> " + p["stack"], st["sub"]))
+            stack = "<b>Stack:</b> " + p["stack"]
+            # The one-pager has no room for a repo line, so the link rides on the stack line.
+            if key == "resume" and (p.get("repo") or "").startswith("github.com/"):
+                stack += " &nbsp;|&nbsp; " + link("<u>" + p["repo"] + "</u>", "https://" + p["repo"])
+            head.append(Paragraph(stack, st["sub"]))
         bs = p.get("resume_bullets") if key == "resume" and p.get("resume_bullets") else p["bullets"]
         if max_bullets:
             bs = bs[:max_bullets]
@@ -231,27 +267,28 @@ def two_column_list(st, items, width):
 def footer(canvas, doc):
     """Name on the left, page number on the right, below the bottom margin."""
     canvas.saveState()
-    canvas.setFont("Helvetica", 7.5)
+    canvas.setFont("Body", 8)
     canvas.setFillColor(MUTED)
     y = doc.bottomMargin - 13
-    canvas.drawString(doc.leftMargin, y, data.PROFILE["name"])
-    canvas.drawRightString(doc.leftMargin + doc.width, y, "Page %d" % doc.page)
+    canvas.drawString(doc.leftMargin + FRAME_PAD, y, data.PROFILE["name"])
+    canvas.drawRightString(doc.leftMargin + doc.width - FRAME_PAD, y, "Page %d" % doc.page)
     canvas.restoreState()
 
 
 def render(path, story_fn, size, margin, title, with_footer=False):
     doc = SimpleDocTemplate(
         path, pagesize=LETTER,
-        leftMargin=margin, rightMargin=margin,
+        # Pull the frame out by its own inset so text and rows both sit at `margin`.
+        leftMargin=margin - FRAME_PAD, rightMargin=margin - FRAME_PAD,
         topMargin=margin * 0.82, bottomMargin=margin * 0.7,
         title=title, author=data.PROFILE["name"], subject=data.PROFILE["title"],
-        creator="resume/build.py",
+        creator="build.py",
         # Deterministic output: without this reportlab stamps a build timestamp
         # and a fresh document id, so rebuilding with no content change still
         # shows both PDFs as modified and invites a pointless commit.
         invariant=1,
     )
-    width = doc.width
+    width = doc.width - 2 * FRAME_PAD
     st = styles(size)
     if with_footer:
         doc.build(story_fn(st, width), onFirstPage=footer, onLaterPages=footer)
@@ -264,50 +301,63 @@ def resume_story(st, width):
     s = header(st, data.PROFILE, with_title=True)
     s += section(st, "Professional Summary")
     s += [Paragraph(data.RESUME_SUMMARY, st["lead"])]
-    s += section(st, "Education") + education(st, width, courses=False)
+    edu = section(st, "Education") + education(st, width, courses=False)
+    if not EDUCATION_LAST:
+        s += edu
     s += section(st, "Technical Skills") + skills(st, data.SKILLS_RESUME)
+    # A heading with nothing under it is worse than no heading.
+    exp = experience(st, width, data.EXPERIENCE_RESUME_BULLETS, resume=True)
+    if exp:
+        s += section(st, EXPERIENCE_HEADING) + exp
     s += section(st, "Projects") + projects(st, width, "resume")
-    s += section(st, "Experience & Leadership")
-    s += experience(st, width, data.EXPERIENCE_RESUME_BULLETS, resume=True)
-    s += section(st, "Certifications & Recognition")
-    s += bullets(st, data.CERTIFICATIONS_RESUME)
+    # One item per line in two columns: every credential readable at a glance.
+    s += section(st, "Certifications") + two_column_list(st, data.CERTIFICATIONS_RESUME, width)
+    if getattr(data, "RECOGNITION_RESUME", None):
+        s += section(st, "Recognition & Activities") + two_column_list(st, data.RECOGNITION_RESUME, width)
+    if EDUCATION_LAST:
+        s += edu
     return s
 
 
 def cv_story(st, width):
     s = header(st, data.PROFILE, with_title=True)
     s += section(st, "Profile") + [Paragraph(data.SUMMARY, st["body"])]
-    s += section(st, "Education") + education(st, width)
+    edu = section(st, "Education") + education(st, width)
+    if not EDUCATION_LAST:
+        s += edu
     s += section(st, "Technical Skills") + skills(st)
+    s += section(st, EXPERIENCE_HEADING) + experience(st, width)
     s += section(st, "Selected Projects") + projects(st, width, "cv")
-    s += section(st, "Experience & Leadership") + experience(st, width)
     s += section(st, "Certifications") + two_column_list(st, data.CERTIFICATIONS, width)
     s += section(st, "Achievements") + bullets(st, data.ACHIEVEMENTS)
+    if EDUCATION_LAST:
+        s += edu
     return s
 
 
 def build_resume():
     """Shrink until it fits on one page, then stop."""
-    path = os.path.join(OUT, "Saatwik-Vasamsetti-Resume.pdf")
-    for size, margin in ((9.6, 0.52 * inch), (9.4, 0.50 * inch), (9.2, 0.48 * inch),
-                         (9.0, 0.46 * inch), (8.8, 0.44 * inch), (8.6, 0.42 * inch),
-                         (8.4, 0.41 * inch), (8.2, 0.40 * inch)):
-        pages = render(path, resume_story, size, margin, "Saatwik Sairaam Vasamsetti - Resume")
+    path = os.path.join(OUT, FILES["resume"])
+    # Calibri sets narrow, so it can start larger.
+    for size, margin in ((10.5, 0.55 * inch), (10.2, 0.52 * inch), (10.0, 0.50 * inch),
+                         (9.8, 0.48 * inch), (9.6, 0.46 * inch), (9.4, 0.44 * inch),
+                         (9.2, 0.42 * inch), (9.0, 0.40 * inch)):
+        pages = render(path, resume_story, size, margin, data.PROFILE["name"] + " - Resume")
         if pages == 1:
             return path, pages, size
-    raise SystemExit("resume still spills past one page at 8.2pt - cut content in data.py")
+    raise SystemExit("resume still spills past one page at 9.0pt - cut content in data.py")
 
 
 def build_cv():
     """Three pages. A fourth holding seven orphaned lines is just a worse CV."""
-    path = os.path.join(OUT, "Saatwik-Vasamsetti-CV.pdf")
-    for size, margin in ((9.2, 0.52 * inch), (9.0, 0.50 * inch),
-                         (8.8, 0.48 * inch), (8.5, 0.46 * inch)):
+    path = os.path.join(OUT, FILES["cv"])
+    for size, margin in ((10.2, 0.55 * inch), (10.0, 0.52 * inch),
+                         (9.8, 0.50 * inch), (9.5, 0.48 * inch)):
         pages = render(path, cv_story, size, margin,
-                       "Saatwik Sairaam Vasamsetti - CV", with_footer=True)
+                       data.PROFILE["name"] + " - CV", with_footer=True)
         if pages <= 3:
             return path, pages, size
-    raise SystemExit("CV runs past three pages at 8.5pt - cut content in data.py")
+    raise SystemExit("CV runs past three pages at 9.5pt - cut content in data.py")
 
 
 if __name__ == "__main__":

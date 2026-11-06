@@ -1,0 +1,245 @@
+/* Motion layer for the agent-built portfolio. Everything here is presentation:
+   with this file or agentic.js missing, index.html is still a complete page. */
+
+/* ---------- Atmosphere ---------- */
+body { transition: background-color .32s ease; }
+body::before {
+  background:
+    radial-gradient(520px 420px at var(--gx, 50%) var(--gy, 40%), rgba(255, 59, 48, .10), transparent 72%),
+    radial-gradient(44vw 70vh at 50% 62%, rgba(255, 59, 48, .13), transparent 72%);
+}
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 58;
+  pointer-events: none;
+  opacity: .055;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---------- Build sequence ---------- */
+html.wire body { background-color: #3b3738; }
+html.wire body::before { opacity: 0; }
+html.building [data-b] { opacity: 0; animation: failsafe 0s linear 9s forwards; }
+html.building [data-b].built { opacity: 1; animation: none; }
+html.building [data-b="fade"].built { animation: assemble .5s cubic-bezier(.2, .7, .2, 1) both; }
+html.building .word.built { animation: wipe-down .95s cubic-bezier(.3, .6, .2, 1) both; }
+html.building .name.built.empty { color: transparent; }
+@keyframes wipe-down {
+  from { clip-path: inset(-10% -5% 110% -5%); }
+  to { clip-path: inset(-10% -5% -10% -5%); }
+}
+
+.intro-chip {
+  position: fixed;
+  z-index: 59;
+  left: 50%;
+  top: 50%;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  margin: -28px 0 0 -28px;
+  border-radius: 13px;
+  background: var(--red);
+  color: #fff;
+  font: 700 20px/1 var(--mono);
+  box-shadow: 0 0 46px rgba(255, 59, 48, .55);
+  transition: transform .5s cubic-bezier(.7, 0, .2, 1), opacity .15s linear .45s;
+  animation: chip-breathe 1s ease-in-out infinite;
+}
+@keyframes chip-breathe { 50% { box-shadow: 0 0 80px rgba(255, 59, 48, .9); } }
+
+/* The portrait assembles from fragments, then takes its red ground. */
+.photo-wrap.pb .photo { background: #1a1617; }
+.photo-wrap.pb .photo img { opacity: 0; }
+.photo-wrap.pb .photo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--red);
+  clip-path: inset(100% 0 0 0);
+  transition: clip-path .5s cubic-bezier(.7, 0, .2, 1);
+}
+.photo-wrap.pb.pb-red .photo::before { clip-path: inset(0); }
+.photo-wrap.pb .photo-badge { opacity: 0; transform: translate(-50%, 10px); transition: opacity .25s, transform .25s; }
+.photo-wrap.pb.pb-badge .photo-badge { opacity: 1; transform: translate(-50%, 0); }
+.mosaic { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+/* Scan line and hover glitch on the portrait. */
+.photo-scan {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -30%;
+  height: 26%;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, .13) 88%, rgba(255, 255, 255, .5));
+  animation: scan 5.5s cubic-bezier(.5, 0, .5, 1) infinite;
+}
+@keyframes scan { 0%, 30% { top: -30%; } 75%, 100% { top: 105%; } }
+.photo { transition: box-shadow .3s; }
+.photo-wrap:hover .photo { box-shadow: 0 0 60px rgba(255, 59, 48, .5); }
+.photo-wrap:hover .photo img { animation: glitch .9s steps(2, end) infinite; }
+@keyframes glitch {
+  0%, 100% { filter: none; translate: 0 0; clip-path: none; }
+  18% { filter: drop-shadow(5px 0 0 rgba(0, 240, 255, .75)) drop-shadow(-5px 0 0 rgba(255, 0, 90, .75)); translate: -3px 0; clip-path: polygon(0 0, 100% 0, 100% 38%, 0 38%, 0 44%, 100% 44%, 100% 100%, 0 100%); }
+  36% { filter: none; translate: 2px 0; clip-path: none; }
+  58% { filter: drop-shadow(-4px 0 0 rgba(0, 240, 255, .6)) drop-shadow(4px 0 0 rgba(255, 0, 90, .6)); translate: 3px 0; clip-path: polygon(0 0, 100% 0, 100% 66%, 0 66%, 0 71%, 100% 71%, 100% 100%, 0 100%); }
+  74% { filter: none; translate: 0 0; clip-path: none; }
+}
+
+/* ---------- Typing ---------- */
+.ch { opacity: 0; }
+.ch.on { opacity: 1; }
+.ch.on.sel { background: rgba(47, 155, 255, .5); color: #fff; }
+.chw { display: inline; }
+
+/* ---------- PORTFOLIO word ---------- */
+.word { white-space: nowrap; will-change: transform; opacity: var(--fade, 1); }
+.word .ltr { display: inline-block; transition: translate .25s ease-out; }
+.word.neon { animation: neon 1s linear both; }
+.word.buzz { animation: buzz 7s linear infinite; }
+@keyframes neon {
+  0%, 12%, 22%, 41% { opacity: .25; }
+  8%, 17%, 34%, 50%, 100% { opacity: 1; }
+}
+@keyframes buzz {
+  0%, 46%, 49%, 52%, 100% { opacity: var(--fade, 1); }
+  47%, 51% { opacity: calc(var(--fade, 1) * .72); }
+}
+
+/* ---------- Nav: rulers make room, the active section is tracked ---------- */
+.nav { transition: top .28s ease; }
+html.rulers .nav { top: calc(22px + env(safe-area-inset-top, 0px)); }
+.nav-links { position: relative; }
+.nav-links a.active { color: var(--fg); }
+.nav-ind {
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  height: 2px;
+  width: 0;
+  border-radius: 2px;
+  background: var(--red);
+  box-shadow: 0 0 10px var(--red);
+  opacity: 0;
+  transition: transform .35s cubic-bezier(.3, .8, .2, 1), width .35s cubic-bezier(.3, .8, .2, 1), opacity .2s;
+}
+.nav-prog {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: -1px;
+  height: 1px;
+  background: var(--red);
+  transform: scaleX(var(--p, 0));
+  transform-origin: left;
+  box-shadow: 0 0 8px var(--red);
+}
+
+/* ---------- Scroll reveals ---------- */
+.fx-pre { opacity: 0; }
+.fx-wipe {
+  -webkit-mask-image: linear-gradient(#000 42%, transparent 58%);
+  mask-image: linear-gradient(#000 42%, transparent 58%);
+  -webkit-mask-size: 100% 320%;
+  mask-size: 100% 320%;
+  animation: mask-down .85s cubic-bezier(.3, .6, .3, 1) both;
+}
+@keyframes mask-down {
+  from { -webkit-mask-position: 0 100%; mask-position: 0 100%; translate: 0 10px; }
+  to { -webkit-mask-position: 0 0; mask-position: 0 0; translate: 0 0; }
+}
+.fx-rise { animation: rise .6s cubic-bezier(.2, .8, .2, 1) var(--d, 0ms) both; }
+@keyframes rise { from { opacity: 0; translate: 0 22px; } to { opacity: 1; translate: 0 0; } }
+.fx-slide { animation: slide .55s cubic-bezier(.2, .8, .2, 1) var(--d, 0ms) both; }
+@keyframes slide { from { opacity: 0; translate: 30px 0; } to { opacity: 1; translate: 0 0; } }
+.fx-pop { animation: pop .42s cubic-bezier(.3, 1.5, .5, 1) var(--d, 0ms) both; }
+@keyframes pop {
+  from { opacity: 0; scale: .6; rotate: -4deg; box-shadow: 0 0 0 rgba(255, 59, 48, 0); }
+  60% { box-shadow: 0 0 16px rgba(255, 59, 48, .55); border-color: var(--red); }
+  to { opacity: 1; scale: 1; rotate: 0deg; }
+}
+.fx-card { animation: card-build .62s cubic-bezier(.65, 0, .2, 1) both; }
+@keyframes card-build {
+  from { clip-path: inset(0 100% 100% 0 round 12px); }
+  to { clip-path: inset(0 0 0 0 round 12px); }
+}
+.fx-job { animation: job-in .6s cubic-bezier(.2, .8, .2, 1) var(--d, 0ms) both; }
+@keyframes job-in {
+  from { opacity: 0; translate: -18px 0; clip-path: inset(0 0 100% 0); }
+  to { opacity: 1; translate: 0 0; clip-path: inset(0 -20px -20px -20px); }
+}
+.tile b, .stat b, .edu b { transition: text-shadow .3s; }
+.counting { text-shadow: 0 0 18px rgba(255, 59, 48, .85); }
+
+/* ---------- Cards: spotlight, travelling border, tilt ---------- */
+.card { position: relative; isolation: isolate; }
+.card::before, .card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .28s;
+}
+.card::before { background: radial-gradient(300px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 59, 48, .17), transparent 70%); }
+.card::after {
+  z-index: 1;
+  padding: 1px;
+  background: radial-gradient(240px circle at var(--mx, 50%) var(--my, 50%), #ff7a70, rgba(47, 155, 255, .6) 45%, transparent 72%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+}
+.card:hover::before, .card:hover::after { opacity: 1; }
+.work {
+  transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition: transform .18s ease-out, box-shadow .25s;
+}
+.work:hover { box-shadow: 0 18px 50px rgba(0, 0, 0, .55), 0 0 40px rgba(255, 59, 48, .1); }
+
+/* ---------- Magnetic controls ---------- */
+.mag { transition: translate .2s ease-out, background .2s, border-color .2s, color .2s; }
+
+/* ---------- Layer panel swap ---------- */
+.panel-in { animation: panel-in .42s cubic-bezier(.2, .8, .2, 1) both; }
+@keyframes panel-in {
+  from { opacity: 0; clip-path: inset(0 100% 0 0 round 9px); }
+  to { opacity: 1; clip-path: inset(0 0 0 0 round 9px); }
+}
+
+/* ---------- Marquee bands ---------- */
+.mq { overflow: hidden; padding-block: 14px; border-block: 1px solid var(--line); background: rgba(255, 59, 48, .035); }
+.mq-in { will-change: transform; }
+.mq-track { display: flex; width: max-content; animation: mq 34s linear infinite; }
+.mq.rev .mq-track { animation-direction: reverse; }
+.mq-track span {
+  padding-right: 44px;
+  font: 400 clamp(30px, 4.6vw, 62px)/1 var(--display);
+  letter-spacing: .03em;
+  white-space: nowrap;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 59, 48, .85);
+}
+.mq-track span:nth-child(even) { color: var(--fg); -webkit-text-stroke: 0; }
+@keyframes mq { to { transform: translateX(-50%); } }
+
+html.calm .mq-track, html.calm .photo-scan, html.calm .word.buzz { animation-play-state: paused; }
+html.calm .photo-wrap:hover .photo img { animation: none; }
+html.calm .photo-scan { display: none; }
+
+@media print {
+  .fx-pre, .ch { opacity: 1 !important; }
+  #agents, .console, .mq, .intro-chip { display: none !important; }
+  html.building [data-b] { opacity: 1 !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  body::after { display: none; }
+  .fx-pre, .ch { opacity: 1 !important; }
+}

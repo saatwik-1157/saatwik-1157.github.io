@@ -11,7 +11,7 @@ resume/build.py    the renderer (reportlab)
 
 ```bash
 pip install reportlab
-python resume/build.py
+python resume/build.py resume .
 ```
 
 It writes `Saatwik-Vasamsetti-Resume.pdf` and `Saatwik-Vasamsetti-CV.pdf` into

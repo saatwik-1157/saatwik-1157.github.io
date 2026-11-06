@@ -34,8 +34,10 @@ Also bundled: `Saatwik-Vasamsetti-Resume.pdf` and `Saatwik-Vasamsetti-CV.pdf`,
 linked from the page so a visitor can leave with the document rather than a
 screenshot.
 
-These two PDFs are the data-role versions, built outside this repository. The
-`resume/` folder here is older and does not match them.
+These two PDFs are build output. Their content lives in `resume/data.py` and is
+rendered by `python resume/build.py resume .` (see
+[resume/README.md](resume/README.md)). The build embeds Calibri, so it needs a
+Windows machine or that font installed.
 
 ## Run it
 

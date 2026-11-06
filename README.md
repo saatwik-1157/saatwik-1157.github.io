@@ -1,44 +1,41 @@
 # Saatwik Sairaam Vasamsetti — Portfolio
 
-A single-file personal portfolio: one `index.html` carrying the markup, the
-styles and the canvas animation, with no build step, no framework and no
-runtime dependencies. Open the file and it runs.
+A personal portfolio with no build step and no framework: `index.html` carries
+the content and base styles, and `assets/agentic.js` and `assets/agentic.css`
+add the motion. The only external request is Google Fonts, and the page falls
+back to system fonts without it.
+
+The page is assembled in front of the visitor by a team of animated cursors.
+Scrolling, tapping or pressing a key skips the intro, "Agents off" stops the
+motion, and `prefers-reduced-motion` turns it off entirely.
 
 **Built by Saatwik Sairaam Vasamsetti** · [github.com/saatwik-1157](https://github.com/saatwik-1157)
 
-## Why one file
+## Why no build step
 
 A portfolio is read once, quickly, usually on a phone, often on a bad
-connection. Every dependency is a request that can fail before the page paints.
-Keeping the whole site in one document means:
-
-- **One request** for everything above the fold — no CSS or JS round-trip.
-- **Nothing to build.** No toolchain to re-learn a year from now when a
-  recruiter asks for an update and the Node version has moved on twice.
-- **Nothing to break.** No package can be yanked, deprecated or CVE'd out from
-  under a static page that imports nothing.
-
-The cost is a 674-line HTML file. That is the trade, made deliberately.
+connection. With no toolchain and no packages, there is nothing to re-learn when
+a recruiter asks for an update, and nothing that can be deprecated out from
+under a static page. All the text lives in `index.html`, so the page is complete
+even if the motion files fail to load.
 
 ## What's on the page
 
-| Section       | What it covers                                                   |
-| ------------- | ---------------------------------------------------------------- |
-| Hero          | Animated canvas background, role, primary calls to action         |
-| `#about`      | Short professional summary                                        |
-| `#skills`     | Languages, frameworks and tooling                                 |
-| `#projects`   | Selected work with links to the live sites and source             |
-| `#experience` | Roles and what was actually shipped in each                       |
-| `#certs`      | Certifications                                                    |
-| `#contact`    | Direct contact routes                                             |
+| Section      | What it covers                                                    |
+| ------------ | ----------------------------------------------------------------- |
+| Hero         | Role, summary and primary calls to action                         |
+| `#about`     | Background, approach and skills                                   |
+| `#flagships` | Trade Research and the other main projects, with measured results |
+| `#matrix`    | Smaller projects, filterable by type                              |
+| `#record`    | Experience and credentials                                        |
+| `#contact`   | Direct contact routes                                             |
 
-Also bundled: `Saatwik-Vasamsetti-Resume.pdf`, `Saatwik-Vasamsetti-CV.pdf` and
-`Saatwik-Internship-Toolkit.pdf`, linked from the page so a visitor can leave
-with the document rather than a screenshot.
+Also bundled: `Saatwik-Vasamsetti-Resume.pdf` and `Saatwik-Vasamsetti-CV.pdf`,
+linked from the page so a visitor can leave with the document rather than a
+screenshot.
 
-The first two are build output, not hand-made files. Their content lives in
-`resume/data.py` and is rendered by `python resume/build.py` — see
-[resume/README.md](resume/README.md).
+These two PDFs are the data-role versions, built outside this repository. The
+`resume/` folder here is older and does not match them.
 
 ## Run it
 
